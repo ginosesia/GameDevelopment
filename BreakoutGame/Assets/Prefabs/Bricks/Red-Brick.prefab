@@ -96,6 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 5
+  hitsNeeded: 0
+  hitSprite: {fileID: 0}
+  secondHitSprite: {fileID: 0}
 --- !u!61 &6955426765314918124
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -108,7 +111,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}

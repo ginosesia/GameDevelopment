@@ -14,10 +14,12 @@ public class GameManager : MonoBehaviour
     public static bool gameIsPaused = false;
     public Text scoreLabel;
     public Text livesLabel;
-    public Text levelLabel;
+    public Text highScoreLabel;
+    public Text levelCompleteLabel;
+    public InputField nameInput;
     public GameObject gameOverPanel;
     public GameObject nextLevelPanel;
-    public Ball ball;
+    public Ball ball; 
     public Transform[] levels;
     private readonly string livesText = "Lives: ";
     private readonly string scoreText = "Score: ";
@@ -66,7 +68,7 @@ public class GameManager : MonoBehaviour
             } else
             {
                 nextLevelPanel.SetActive(true);
-                Time.timeScale = 0f;
+                levelNumber++;
             }
         }   
     }
@@ -74,9 +76,6 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         nextLevelPanel.SetActive(false);
-        Time.timeScale = 1f;
-        ball.SetBallPosition();
-        ball.ballInPlay = false;
         currentLevelNumber++;
         Instantiate(levels[currentLevelNumber], Vector2.zero, Quaternion.identity);
         numberOfBricks = GameObject.FindGameObjectsWithTag(rBrick).Length
@@ -91,6 +90,26 @@ public class GameManager : MonoBehaviour
         gameOverPanel.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = false;
+        int highScore = PlayerPrefs.GetInt("HIGHSCORE");
+        if (score > highScore)
+        {
+            PlayerPrefs.SetInt("HIGHSCORE", score);
+            highScoreLabel.text = "New High Score: \nEnter Your Name Below.";
+            nameInput.gameObject.SetActive(true);
+        } else
+        {
+            highScoreLabel.text = PlayerPrefs.GetString("HIGHSCORENAME") + "'s High Score was "  + highScore + " \n Can you Beat it?";
+        }
+        
+    }
+
+    public void EndNameEdit()
+    {
+        string name = nameInput.text;
+        PlayerPrefs.SetString("HIGHSCORENAME", name);
+        nameInput.gameObject.SetActive(false);
+        highScoreLabel.text = "Congratulations " + name + "\n Your New High Score is: " + score;
+
     }
 
     public void AdjustScore(int change)
@@ -111,4 +130,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(menu);
     }
 
+    public void WatchReplay()
+    {
+
+    }
 }
