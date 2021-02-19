@@ -12,8 +12,8 @@ public class Brick : MonoBehaviour
     public void HitBrick()
     {
         hitsNeeded--;
-        if (hitsNeeded == 2) GetComponent<SpriteRenderer>().sprite = hitSprite;
-        if (hitsNeeded == 1) GetComponent<SpriteRenderer>().sprite = secondHitSprite;
+        if (hitsNeeded >= 2) GetComponent<SpriteRenderer>().sprite = hitSprite;
+        if (hitsNeeded >= 1) GetComponent<SpriteRenderer>().sprite = secondHitSprite;
     }
 
 }

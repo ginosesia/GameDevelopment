@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
 {
     public string level = "Level1";
     public string options = "Options";
+    public string leaderBoard = "LeaderBoard";
 
     public void Play()
     {
@@ -17,6 +18,11 @@ public class MenuManager : MonoBehaviour
     public void Options()
     {
         SceneManager.LoadScene(options);
+    }
+
+    public void LeaderBoard()
+    {
+        SceneManager.LoadScene(leaderBoard);
     }
 
     public void Exit()

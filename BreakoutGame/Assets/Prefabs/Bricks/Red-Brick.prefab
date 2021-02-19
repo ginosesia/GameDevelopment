@@ -97,8 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points: 5
   hitsNeeded: 0
-  hitSprite: {fileID: 0}
-  secondHitSprite: {fileID: 0}
+  hitSprite: {fileID: 21300000, guid: 434cf9475826043dfbd73985dfcd4019, type: 3}
+  secondHitSprite: {fileID: 21300000, guid: cbf9ba2e60a6644438e76419cc231686, type: 3}
 --- !u!61 &6955426765314918124
 BoxCollider2D:
   m_ObjectHideFlags: 0
