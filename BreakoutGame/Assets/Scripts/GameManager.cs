@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public InputField nameInput;
     public GameObject gameOverPanel;
     public GameObject nextLevelPanel;
+    public LeaderBoard lb;
     public Ball ball; 
     public Transform[] levels;
     private readonly string livesText = "Lives: ";
@@ -105,7 +106,6 @@ public class GameManager : MonoBehaviour
     public void SaveScore()
     {
         string name = nameInput.text;
-        LeaderBoard lb = new LeaderBoard();
         lb.AddNewEntry(score, name);
         nameInput.gameObject.SetActive(false);
         highScoreLabel.text = "Congratulations " + name + "\n Your New Score is: " + score;
