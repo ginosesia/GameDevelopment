@@ -73,6 +73,7 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         if (collision.transform.CompareTag(rbrick) || collision.transform.CompareTag(gbrick)
             || collision.transform.CompareTag(pbrick) || collision.transform.CompareTag(bbrick))
         {

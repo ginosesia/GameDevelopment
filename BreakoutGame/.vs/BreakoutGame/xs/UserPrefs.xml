@@ -1,20 +1,23 @@
 ﻿<Properties StartupConfiguration="{32D65D90-F439-2870-AEF3-269D4203D106}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MenuManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/GameManager.cs" Line="109" Column="1" />
-      <File FileName="Assets/Scripts/LeaderBoard.cs" Line="48" Column="1" />
+      <File FileName="Assets/Scripts/LeaderBoard.cs" Line="102" Column="1" />
+      <File FileName="Assets/Scripts/GameManager.cs" />
       <File FileName="Assets/Scripts/Brick.cs" />
       <File FileName="Assets/Scripts/Ball.cs" />
-      <File FileName="Assets/Scripts/MenuManager.cs" />
+      <File FileName="Assets/Scripts/MenuManager.cs" Line="16" Column="26" />
       <File FileName="Assets/Scripts/OptionsManager.cs" />
       <File FileName="Assets/Scripts/PauseMenu.cs" />
       <File FileName="Assets/Scripts/Paddle.cs" />
       <File FileName="Assets/Scripts/PowerUp.cs" />
+      <File FileName="Assets/Scripts/StartTutorial.cs" Line="17" Column="1" />
+      <File FileName="Assets/Scripts/TutorialOrGame.cs" />
+      <File FileName="Assets/Scripts/TutorialManager.cs" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="7bc0e937-4218-45b0-afb0-48ff731f25d1" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b36b5a40-03f1-408e-932d-e36cd9fa5b3c" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

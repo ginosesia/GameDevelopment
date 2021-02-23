@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class LeaderBoard : MonoBehaviour
 {
@@ -93,5 +95,12 @@ public class LeaderBoard : MonoBehaviour
 
         PlayerPrefs.SetString("highscoreTable", json);
         PlayerPrefs.Save();
+    }
+
+    private string menu = "MainMenu";
+
+    public void Back()
+    {
+        SceneManager.LoadScene(menu);
     }
 }

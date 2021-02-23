@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
             + GameObject.FindGameObjectsWithTag(gBrick).Length
             + GameObject.FindGameObjectsWithTag(bBrick).Length;
         gameIsPaused = false;
+
         Time.timeScale = 1f;
     }
 

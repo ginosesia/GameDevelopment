@@ -6,28 +6,31 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public string level = "Level1";
+    public string tutorial = "TutorialOrGame";
     public string options = "Options";
     public string leaderBoard = "LeaderBoard";
 
     public void Play()
     {
-        SceneManager.LoadScene(level);
+        SceneManager.LoadScene(tutorial);
+        Debug.Log("Play");
     }
 
     public void Options()
     {
         SceneManager.LoadScene(options);
+        Debug.Log("Options");
     }
 
     public void LeaderBoard()
     {
         SceneManager.LoadScene(leaderBoard);
+        Debug.Log("LeaderBoard");
     }
 
     public void Exit()
     {
-        Debug.Log("Exit");
-        Application.Quit();
+       Application.Quit();
+       Debug.Log("Exit");
     }
 }
