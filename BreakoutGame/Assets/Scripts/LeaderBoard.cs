@@ -50,21 +50,25 @@ public class LeaderBoard : MonoBehaviour
 
         int rank = transformList.Count + 1;
         string rankString;
-        switch (rank)
+        if (rank <= 10)
         {
-            default: rankString = rank + "th"; break;
-            case 1: rankString = "1st"; break;
-            case 2: rankString = "2nd"; break;
-            case 3: rankString = "3rd"; break;
+            switch (rank)
+            {
+                default: rankString = rank + "th"; break;
+                case 1: rankString = "1st"; break;
+                case 2: rankString = "2nd"; break;
+                case 3: rankString = "3rd"; break;
+            }
+
+            entryObject.Find("PositionEntry").GetComponent<Text>().text = rankString;
+
+            int score = highScore.score;
+            string name = highScore.name;
+            entryObject.Find("ScoreEntry").GetComponent<Text>().text = score.ToString();
+            entryObject.Find("NameEntry").GetComponent<Text>().text = name;
+
+            transformList.Add(entryObject);
         }
-
-        entryObject.Find("PositionEntry").GetComponent<Text>().text = rankString;
-        int score = highScore.score;
-        string name = highScore.name;
-        entryObject.Find("ScoreEntry").GetComponent<Text>().text = score.ToString();
-        entryObject.Find("NameEntry").GetComponent<Text>().text = name;
-
-        transformList.Add(entryObject);
     }
 
     private class HighScores

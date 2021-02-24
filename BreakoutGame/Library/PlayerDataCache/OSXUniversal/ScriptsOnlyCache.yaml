@@ -64,13 +64,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12278}
     - Class: 114
-      Script: {instanceID: 12986}
+      Script: {instanceID: 12988}
     - Class: 114
-      Script: {instanceID: 13332}
+      Script: {instanceID: 13334}
     - Class: 114
-      Script: {instanceID: 13760}
+      Script: {instanceID: 13762}
     - Class: 114
-      Script: {instanceID: 14374}
+      Script: {instanceID: 14376}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -129,21 +129,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12690}
     - Class: 114
-      Script: {instanceID: 12986}
+      Script: {instanceID: 12988}
     - Class: 114
-      Script: {instanceID: 13210}
+      Script: {instanceID: 13212}
     - Class: 114
-      Script: {instanceID: 13278}
+      Script: {instanceID: 13280}
     - Class: 114
-      Script: {instanceID: 13514}
+      Script: {instanceID: 13516}
     - Class: 114
-      Script: {instanceID: 13712}
+      Script: {instanceID: 13714}
     - Class: 114
-      Script: {instanceID: 13746}
+      Script: {instanceID: 13748}
     - Class: 114
-      Script: {instanceID: 13760}
+      Script: {instanceID: 13762}
     - Class: 114
-      Script: {instanceID: 14374}
+      Script: {instanceID: 14376}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -194,11 +194,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12744}
     - Class: 114
-      Script: {instanceID: 12986}
+      Script: {instanceID: 12988}
     - Class: 114
-      Script: {instanceID: 13760}
+      Script: {instanceID: 13762}
     - Class: 114
-      Script: {instanceID: 14374}
+      Script: {instanceID: 14376}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -241,13 +241,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12278}
     - Class: 114
-      Script: {instanceID: 12986}
+      Script: {instanceID: 12988}
     - Class: 114
-      Script: {instanceID: 13332}
+      Script: {instanceID: 13334}
     - Class: 114
-      Script: {instanceID: 13760}
+      Script: {instanceID: 13762}
     - Class: 114
-      Script: {instanceID: 14374}
+      Script: {instanceID: 14376}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -304,23 +304,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12690}
     - Class: 114
-      Script: {instanceID: 12986}
+      Script: {instanceID: 12988}
     - Class: 114
-      Script: {instanceID: 13210}
+      Script: {instanceID: 13212}
     - Class: 114
-      Script: {instanceID: 13278}
+      Script: {instanceID: 13280}
     - Class: 114
-      Script: {instanceID: 13514}
+      Script: {instanceID: 13516}
     - Class: 114
-      Script: {instanceID: 13712}
+      Script: {instanceID: 13714}
     - Class: 114
-      Script: {instanceID: 13746}
+      Script: {instanceID: 13748}
     - Class: 114
-      Script: {instanceID: 13760}
+      Script: {instanceID: 13762}
     - Class: 114
-      Script: {instanceID: 13862}
+      Script: {instanceID: 13864}
     - Class: 114
-      Script: {instanceID: 14374}
+      Script: {instanceID: 14376}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -371,11 +371,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12780}
     - Class: 114
-      Script: {instanceID: 12986}
+      Script: {instanceID: 12988}
     - Class: 114
-      Script: {instanceID: 13760}
+      Script: {instanceID: 13762}
     - Class: 114
-      Script: {instanceID: 14374}
+      Script: {instanceID: 14376}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -519,7 +519,7 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: a9126db90ef85a0f723927b4044e832e
+      Hash: 8208fe71f06039d9bafd3cc284d7524a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -669,7 +669,7 @@ ScriptsOnlyBuild:
     className: SpriteSkinEntity
   - hash:
       serializedVersion: 2
-      Hash: db272d78556a0b7486135186afb2f653
+      Hash: 8237e5c4d1f98d1927812e4fc9c1cd03
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MenuManager
@@ -691,6 +691,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: RemoteTestResultSender
+  - hash:
+      serializedVersion: 2
+      Hash: f4fdd4d4cb6a521693a97210517d0fca
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TutorialManager
   - hash:
       serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
@@ -943,12 +949,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: f4fdd4d4cb6a521693a97210517d0fca
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: TutorialManager
   platform: 2
   scenePathNames:
   - Assets/Scenes/MainMenu.unity

@@ -7,13 +7,20 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public string tutorial = "TutorialOrGame";
+    public string play = "Level1";
     public string options = "Options";
     public string leaderBoard = "LeaderBoard";
 
     public void Play()
     {
-        SceneManager.LoadScene(tutorial);
+        SceneManager.LoadScene(play);
         Debug.Log("Play");
+    }
+
+    public void Tutorial()
+    {
+        SceneManager.LoadScene(tutorial);
+        Debug.Log("Tutorial");
     }
 
     public void Options()

@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
     public int lives;
     public int score;
     public int numberOfBricks;
-    public int levelNumber = 1;
     public int currentLevelNumber;
+    public float timer = 2;
     public bool gameOver;
     public static bool gameIsPaused = false;
     public Text scoreLabel;
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     public void AdjustLives(int change)
     {
-        if (lives > 1)
+        if (lives >= 1)
         {
             lives += change;
             livesLabel.text = livesText + lives;
@@ -70,15 +70,20 @@ public class GameManager : MonoBehaviour
                 EndGame();
             } else
             {
-                nextLevelPanel.SetActive(true);
-                levelNumber++;
+                Invoke(nameof(DelayNextLevel), 1);
             }
         }   
     }
 
+    public void DelayNextLevel()
+    {
+        ball.rigidBody.velocity = Vector2.zero;
+        ball.ballInPlay = false;
+        NextLevel();
+    }
+
     public void NextLevel()
     {
-        nextLevelPanel.SetActive(false);
         currentLevelNumber++;
         Instantiate(levels[currentLevelNumber], Vector2.zero, Quaternion.identity);
         numberOfBricks = GameObject.FindGameObjectsWithTag(rBrick).Length
@@ -107,6 +112,7 @@ public class GameManager : MonoBehaviour
     public void SaveScore()
     {
         string name = nameInput.text;
+        //lb.GetComponent<LeaderBoard>().AddNewEntry(score,name);
         lb.AddNewEntry(score, name);
         nameInput.gameObject.SetActive(false);
         highScoreLabel.text = "Congratulations " + name + "\n Your New Score is: " + score;
