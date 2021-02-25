@@ -148,51 +148,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!1 &106747479
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 106747481}
-  - component: {fileID: 106747480}
-  m_Layer: 0
-  m_Name: leaderBoard
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &106747480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 106747479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 359130e1158c64617b48d6a20d5b9d1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryContainer: {fileID: 0}
-  entryTemplate: {fileID: 0}
---- !u!4 &106747481
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 106747479}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 512.176, y: 298.4761, z: -2263.0986}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &262734622
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,6 +505,84 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 398959568}
+  m_CullTransparentMesh: 0
+--- !u!1 &402742357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 402742358}
+  - component: {fileID: 402742360}
+  - component: {fileID: 402742359}
+  m_Layer: 5
+  m_Name: DoubleSpeed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &402742358
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402742357}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 858147990}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 512, y: -29.600098}
+  m_SizeDelta: {x: 233.66422, y: 59.123047}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &402742359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402742357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 1, b: 0.07741523, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 19
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Double Speed
+--- !u!222 &402742360
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402742357}
   m_CullTransparentMesh: 0
 --- !u!1 &434349743
 GameObject:
@@ -1213,15 +1246,16 @@ MonoBehaviour:
   score: 0
   numberOfBricks: 0
   currentLevelNumber: 0
+  timer: 2
   gameOver: 0
   scoreLabel: {fileID: 963051829}
   livesLabel: {fileID: 1092009425}
+  doubleSpeed: {fileID: 402742359}
   highScoreLabel: {fileID: 1247003620}
   levelCompleteLabel: {fileID: 780699068}
   nameInput: {fileID: 1695974451}
   gameOverPanel: {fileID: 891730141}
   nextLevelPanel: {fileID: 1120451038}
-  lb: {fileID: 106747480}
   ball: {fileID: 840009966}
   levels:
   - {fileID: 2211579592965075107, guid: 61ca80f0a384d4a02837030c250cc75a, type: 3}
@@ -1636,6 +1670,7 @@ RectTransform:
   m_Children:
   - {fileID: 963051828}
   - {fileID: 1092009424}
+  - {fileID: 402742358}
   - {fileID: 891730142}
   - {fileID: 1120451039}
   m_Father: {fileID: 0}
@@ -1681,7 +1716,7 @@ RectTransform:
   - {fileID: 1247003619}
   - {fileID: 1695974450}
   m_Father: {fileID: 858147990}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1837,7 +1872,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 142, y: -29.600006}
+  m_AnchoredPosition: {x: 142, y: -29.600098}
   m_SizeDelta: {x: 233.66422, y: 59.123047}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &963051829
@@ -1921,7 +1956,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -142, y: -29.559998}
+  m_AnchoredPosition: {x: -142, y: -29.560059}
   m_SizeDelta: {x: 233.66418, y: 59.123047}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1092009425
@@ -1999,7 +2034,7 @@ RectTransform:
   - {fileID: 569056457}
   - {fileID: 434349744}
   m_Father: {fileID: 858147990}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3937,6 +3972,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 523051840779819847, guid: 83d53ad73356d4ed2b6126a1130d3273,
         type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 840009966}
+    - target: {fileID: 523051840779819847, guid: 83d53ad73356d4ed2b6126a1130d3273,
+        type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 596671085}
@@ -4252,6 +4292,12 @@ PrefabInstance:
       propertyPath: brokenBrick
       value: 
       objectReference: {fileID: 4081212454227664920, guid: 46182ca196eff41ad92e910a2a05e3e9,
+        type: 3}
+    - target: {fileID: 6178267446738953870, guid: 3cbadd297a9864dbf9ed053b1d1ce7af,
+        type: 3}
+      propertyPath: doubleSpeed
+      value: 
+      objectReference: {fileID: 4915510449480228976, guid: 777fcb26b0d074642ad4c85cd3ccdfb8,
         type: 3}
     - target: {fileID: 6178267446738953870, guid: 3cbadd297a9864dbf9ed053b1d1ce7af,
         type: 3}

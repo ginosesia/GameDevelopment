@@ -9,6 +9,7 @@ public class Paddle : MonoBehaviour
     public float leftBoundary;
 
     public GameManager gameManager;
+    public Ball ball;
 
     // Start is called before the first frame update
     void Start()
@@ -35,10 +36,25 @@ public class Paddle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.CompareTag("ExtraLifePowerUp"))
         {
             gameManager.AdjustLives(1);
             Destroy(collision.gameObject);
         }
+
+        if (collision.CompareTag("DoubleSpeed"))
+        {
+            ball.SetBallSpeed(2f);
+            Destroy(collision.gameObject);
+            gameManager.doubleSpeed.gameObject.SetActive(true);
+            Invoke(nameof(SetNormalSpeed), 5);
+        }
+    }
+
+    public void SetNormalSpeed()
+    {
+        ball.SetBallSpeed(1);
+        gameManager.doubleSpeed.gameObject.SetActive(false);
     }
 }

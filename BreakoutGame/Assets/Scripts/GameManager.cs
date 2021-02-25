@@ -14,14 +14,15 @@ public class GameManager : MonoBehaviour
     public static bool gameIsPaused = false;
     public Text scoreLabel;
     public Text livesLabel;
+    public Text doubleSpeed;
     public Text highScoreLabel;
     public Text levelCompleteLabel;
     public InputField nameInput;
     public GameObject gameOverPanel;
     public GameObject nextLevelPanel;
-    public LeaderBoard lb;
     public Ball ball; 
     public Transform[] levels;
+    private LeaderBoard lb;
     private readonly string livesText = "Lives: ";
     private readonly string scoreText = "Score: ";
     private readonly string level = "Level1";
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lb = GameObject.FindObjectOfType(typeof(LeaderBoard)) as LeaderBoard;
         livesLabel.text = livesText + lives;
         scoreLabel.text = scoreText + score;
         numberOfBricks = GameObject.FindGameObjectsWithTag(rBrick).Length
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 1f;
     }
+
 
     public void AdjustLives(int change)
     {
@@ -99,24 +102,23 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         gameIsPaused = false;
         ShowScore();
-
     }
 
     public void ShowScore()
     {
         highScoreLabel.text = "Your score is: " + score + "\nEnter Your Name Below";
         nameInput.gameObject.SetActive(true);
-
     }
 
     public void SaveScore()
     {
         string name = nameInput.text;
-        //lb.GetComponent<LeaderBoard>().AddNewEntry(score,name);
+        //LeaderBoard lb = gameObject.GetComponent<LeaderBoard>();
         lb.AddNewEntry(score, name);
         nameInput.gameObject.SetActive(false);
         highScoreLabel.text = "Congratulations " + name + "\n Your New Score is: " + score;
     }
+
 
     public void AdjustScore(int change)
     {

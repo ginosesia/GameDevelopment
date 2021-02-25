@@ -10,6 +10,7 @@ public class LeaderBoard : MonoBehaviour
     public Transform entryContainer;
     public Transform entryTemplate;
     private List<Transform> listOfScoresTransform;
+    private readonly string menu = "MainMenu";
 
     private void Awake()
     {
@@ -60,13 +61,11 @@ public class LeaderBoard : MonoBehaviour
                 case 3: rankString = "3rd"; break;
             }
 
-            entryObject.Find("PositionEntry").GetComponent<Text>().text = rankString;
-
             int score = highScore.score;
             string name = highScore.name;
+            entryObject.Find("PositionEntry").GetComponent<Text>().text = rankString;
             entryObject.Find("ScoreEntry").GetComponent<Text>().text = score.ToString();
             entryObject.Find("NameEntry").GetComponent<Text>().text = name;
-
             transformList.Add(entryObject);
         }
     }
@@ -100,8 +99,6 @@ public class LeaderBoard : MonoBehaviour
         PlayerPrefs.SetString("highscoreTable", json);
         PlayerPrefs.Save();
     }
-
-    private string menu = "MainMenu";
 
     public void Back()
     {

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class OptionsManager : MonoBehaviour
 {
-    private string menu = "MainMenu";
+    private readonly string menu = "MainMenu";
 
     public void Back()
     {

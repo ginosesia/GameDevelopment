@@ -12,7 +12,9 @@ public class Ball : MonoBehaviour
     public Transform BlueBrick;
     public Transform GreenBrick;
     public Transform powerUp;
+    public Transform doubleSpeed;
     private readonly int lifeLost = -1;
+    private bool doubleSpeedDropped = false;
     public float ballSpeed;
     private readonly string jumpKey = "Jump";
     private readonly string outOfBounds = "OutOfBounds";
@@ -70,6 +72,11 @@ public class Ball : MonoBehaviour
         transform.position = paddle.position;
     }
 
+    public void SetBallSpeed(float test)
+    {
+        if (test == 1) ballSpeed = 400f;
+        else ballSpeed *= test;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -122,8 +129,24 @@ public class Ball : MonoBehaviour
             int random = Random.Range(1, 101);
             if (random < 15)
             {
-                Instantiate(powerUp, collision.transform.position, collision.transform.rotation);
+                if (random <= 5)
+                {
+                    if (!doubleSpeedDropped) DropDoubleSpeed(collision);
+                }
+                else
+                {
+                    Instantiate(powerUp, collision.transform.position, collision.transform.rotation);
+                }
             }
+        }
+    }
+
+    public void DropDoubleSpeed(Collision2D collision)
+    {
+        if (!doubleSpeedDropped)
+        {
+            Instantiate(doubleSpeed, collision.transform.position, collision.transform.rotation);
+            doubleSpeedDropped = true;
         }
     }
 }
