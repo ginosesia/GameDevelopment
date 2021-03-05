@@ -1245,6 +1245,7 @@ MonoBehaviour:
   lives: 3
   score: 0
   numberOfBricks: 0
+  numberOfBalls: 1
   currentLevelNumber: 0
   timer: 2
   gameOver: 0
@@ -4258,6 +4259,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 6178267446738953867, guid: 3cbadd297a9864dbf9ed053b1d1ce7af,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ball
+      objectReference: {fileID: 0}
     - target: {fileID: 6178267446738953870, guid: 3cbadd297a9864dbf9ed053b1d1ce7af,
         type: 3}
       propertyPath: paddle
@@ -4286,6 +4292,12 @@ PrefabInstance:
       propertyPath: GreenBrick
       value: 
       objectReference: {fileID: 4081212454227664920, guid: 8fb078ccfe13243d68ebb2e0189b64b0,
+        type: 3}
+    - target: {fileID: 6178267446738953870, guid: 3cbadd297a9864dbf9ed053b1d1ce7af,
+        type: 3}
+      propertyPath: spawnBalls
+      value: 
+      objectReference: {fileID: 4915510449480228976, guid: bf01064e66f7c41099675d77ddb70715,
         type: 3}
     - target: {fileID: 6178267446738953870, guid: 3cbadd297a9864dbf9ed053b1d1ce7af,
         type: 3}

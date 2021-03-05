@@ -43,6 +43,12 @@ public class Paddle : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
+        if (collision.CompareTag("SpawnBalls"))
+        {
+            Destroy(collision.gameObject);
+            ball.DropMultipleBalls();
+        }
+
         if (collision.CompareTag("DoubleSpeed"))
         {
             ball.SetBallSpeed(2f);

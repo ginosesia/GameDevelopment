@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public int lives;
     public int score;
     public int numberOfBricks;
+    public int numberOfBalls = 1;
     public int currentLevelNumber;
     public float timer = 2;
     public bool gameOver;
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     private readonly string scoreText = "Score: ";
     private readonly string level = "Level1";
     private readonly string menu = "MainMenu";
+    private readonly string gball = "Ball";
     private readonly string rBrick = "Red-Brick";
     private readonly string pBrick = "Pink-Brick";
     private readonly string gBrick = "Green-Brick";
@@ -45,7 +47,6 @@ public class GameManager : MonoBehaviour
             + GameObject.FindGameObjectsWithTag(gBrick).Length
             + GameObject.FindGameObjectsWithTag(bBrick).Length;
         gameIsPaused = false;
-
         Time.timeScale = 1f;
     }
 

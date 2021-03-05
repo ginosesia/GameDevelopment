@@ -12,6 +12,8 @@ TagManager:
   - Pink-Brick
   - ExtraLifePowerUp
   - DoubleSpeed
+  - Ball
+  - SpawnBalls
   layers:
   - Default
   - TransparentFX

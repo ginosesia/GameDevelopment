@@ -5,7 +5,6 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public Rigidbody2D rigidBody;
-    public bool ballInPlay;
     public Transform paddle;
     public Transform RedBrick;
     public Transform PinkBrick;
@@ -13,8 +12,12 @@ public class Ball : MonoBehaviour
     public Transform GreenBrick;
     public Transform powerUp;
     public Transform doubleSpeed;
+    public Transform spawnBalls;
+    private Collision2D spawnBallsCollision;
     private readonly int lifeLost = -1;
     private bool doubleSpeedDropped = false;
+    public bool ballInPlay;
+    public bool multipleBalls = false;
     public float ballSpeed;
     private readonly string jumpKey = "Jump";
     private readonly string outOfBounds = "OutOfBounds";
@@ -33,22 +36,11 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (gameManager.numberOfBricks == 0)
-        {
-            SetBallPosition();
-        }
+        if (gameManager.numberOfBricks == 0) SetBallPosition();
         else
         {
-            if (gameManager.gameOver)
-            {
-                return;
-            }
-
-            if (!ballInPlay)
-            {
-                SetBallPosition();
-            }
-
+            if (gameManager.gameOver) return;
+            if (!ballInPlay) SetBallPosition();
             if (Input.GetButtonDown(jumpKey) && !ballInPlay)
             {
                 ballInPlay = true;
@@ -92,22 +84,11 @@ public class Ball : MonoBehaviour
             }
             else
             {
-                if (collision.gameObject.CompareTag(rbrick))
-                {
-                    PlayAnimation(RedBrick, collision);
-                }
-                else if (collision.gameObject.CompareTag(pbrick))
-                {
-                    PlayAnimation(PinkBrick, collision);
-                }
-                else if (collision.gameObject.CompareTag(bbrick))
-                {
-                    PlayAnimation(BlueBrick, collision);
-                }
-                else if (collision.gameObject.CompareTag(gbrick))
-                {
-                    PlayAnimation(GreenBrick, collision);
-                }
+                if (collision.gameObject.CompareTag(rbrick)) PlayAnimation(RedBrick, collision);
+                if (collision.gameObject.CompareTag(pbrick)) PlayAnimation(PinkBrick, collision);
+                if (collision.gameObject.CompareTag(bbrick)) PlayAnimation(BlueBrick, collision);
+                if (collision.gameObject.CompareTag(gbrick)) PlayAnimation(GreenBrick, collision);
+
                 gameManager.AdjustScore(brick.points);
                 gameManager.UpdateNumberOfBricks();
                 Destroy(collision.gameObject);
@@ -115,38 +96,52 @@ public class Ball : MonoBehaviour
         }
     }
 
-    public void PlayAnimation(Transform transform, Collision2D collision)
+    private void PlayAnimation(Transform transform, Collision2D collision)
     {
         Transform animation = Instantiate(transform, collision.transform.position, collision.transform.rotation);
         Destroy(animation.gameObject, 1.5f);
-        DropPowerUp(collision);
+        SelectPowerUp(collision);
     }
 
-    public void DropPowerUp(Collision2D collision)
+    private void SelectPowerUp(Collision2D collision)
+    {
+        int random = Random.Range(1, 20);
+        if (random <= 8) DropDoubleSpeed(collision);
+        if (random >= 8 || random <= 16) DropExtraLife(collision);
+        if (random >= 17 && gameManager.numberOfBalls == 1)
+        {
+            Instantiate(spawnBalls, collision.transform.position, collision.transform.rotation);
+            multipleBalls = true;
+            spawnBallsCollision = collision;
+        }
+    }
+
+    public void DropMultipleBalls()
+    {
+        if (!multipleBalls) return;
+        for (int i = 1; i <=3; i++)
+        {
+            Ball ball2 = gameObject.AddComponent<Ball>();
+            Instantiate(ball2, spawnBallsCollision.transform.position, spawnBallsCollision.transform.rotation);
+        }
+    }
+
+    private void DropExtraLife(Collision2D collision)
     {
         if (gameManager.lives < 5)
         {
             int random = Random.Range(1, 101);
-            if (random < 15)
-            {
-                if (random <= 5)
-                {
-                    if (!doubleSpeedDropped) DropDoubleSpeed(collision);
-                }
-                else
-                {
-                    Instantiate(powerUp, collision.transform.position, collision.transform.rotation);
-                }
-            }
+            if (random < 15) Instantiate(powerUp, collision.transform.position, collision.transform.rotation);
         }
     }
 
-    public void DropDoubleSpeed(Collision2D collision)
+    private void DropDoubleSpeed(Collision2D collision)
     {
-        if (!doubleSpeedDropped)
-        {
-            Instantiate(doubleSpeed, collision.transform.position, collision.transform.rotation);
-            doubleSpeedDropped = true;
-        }
+        int random = Random.Range(1, 101);
+        if (random < 15) if (!doubleSpeedDropped)
+            {
+                Instantiate(doubleSpeed, collision.transform.position, collision.transform.rotation);
+                doubleSpeedDropped = true;
+            }
     }
 }
