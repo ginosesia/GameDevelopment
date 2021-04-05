@@ -16,8 +16,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
-    - UnityEditor.Tilemaps.GridPaletteBrushes
-    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
     Unity.Rider.Editor.dll:
@@ -35,6 +33,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Image
     - UnityEngine.UI.InputField
     - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
   sceneClasses:
     Assets/Scenes/LeaderBoard.unity:
     - Class: 1
@@ -120,6 +119,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11268}
     - Class: 114
       Script: {instanceID: 11556}
+    - Class: 114
+      Script: {instanceID: 11610}
     - Class: 114
       Script: {instanceID: 11790}
     - Class: 114
@@ -246,6 +247,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13762}
     - Class: 114
       Script: {instanceID: 14376}
+    - Class: 114
+      Script: {instanceID: 14396}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -517,7 +520,7 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: ef40395a321a3c7869cf39f840b41da7
+      Hash: 072cc78d7760b5ba43fe70166fbebb0d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -751,7 +754,7 @@ ScriptsOnlyBuild:
     className: HorizontalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: dd9190fa98bce003e3cf69b9e908e923
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: OptionsManager
@@ -817,7 +820,7 @@ ScriptsOnlyBuild:
     className: AudioTrack
   - hash:
       serializedVersion: 2
-      Hash: f8fc9a3d13b656afc607813dfc206af5
+      Hash: 4ee8f4e47f421b985027259387e06f5b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Ball

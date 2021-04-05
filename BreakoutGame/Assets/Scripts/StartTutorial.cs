@@ -39,12 +39,12 @@ public class StartTutorial : MonoBehaviour
         if (step == 4)
         {
             tutorialStep.text = "5";
-            tutorialText.text = "Catch the falling objects to increase your\n lives";
+            tutorialText.text = "Catch the falling objects to trigger a \npower up";
         }
         if (step == 5)
         {
             tutorialStep.text = "6";
-            tutorialText.text = "Press 'Esc' to pause the game and to display\n more options";
+            tutorialText.text = "Press 'Esc' to pause the game and to \ndisplay more options";
             nextButton.GetComponentInChildren<Text>().text = "Play Game";
         }
         if (step == 6)

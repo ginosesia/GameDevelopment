@@ -43,18 +43,24 @@ public class Paddle : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (collision.CompareTag("SpawnBalls"))
-        {
-            Destroy(collision.gameObject);
-            ball.DropMultipleBalls();
-        }
+        //if (collision.CompareTag("SpawnBalls"))
+        //{
+        //    Destroy(collision.gameObject);
+        //    ball.DropMultipleBalls();
+        //}
 
         if (collision.CompareTag("DoubleSpeed"))
         {
-            ball.SetBallSpeed(2f);
+            ball.SetBallSpeed((float)1.75);
             Destroy(collision.gameObject);
             gameManager.doubleSpeed.gameObject.SetActive(true);
-            Invoke(nameof(SetNormalSpeed), 5);
+            Invoke(nameof(SetNormalSpeed), 10);
+        }
+
+        if (collision.CompareTag("doublePointsBall"))
+        {
+            Destroy(collision.gameObject);
+            gameManager.AdjustScore(0, true);
         }
     }
 

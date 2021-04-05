@@ -148,6 +148,51 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!1 &140557709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 140557711}
+  - component: {fileID: 140557710}
+  m_Layer: 0
+  m_Name: LeaderBoard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &140557710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140557709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 359130e1158c64617b48d6a20d5b9d1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entryContainer: {fileID: 0}
+  entryTemplate: {fileID: 0}
+--- !u!4 &140557711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140557709}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 449.2881, y: 420.15628, z: -533.86536}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &262734622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,7 +1311,6 @@ MonoBehaviour:
   - {fileID: 7533019954484047415, guid: d316f74eda43f4bc4897a84a5e30e875, type: 3}
   - {fileID: 2159395377088982127, guid: 875b4cd1d7d0d4f3188a661d572a20a4, type: 3}
   - {fileID: 6436654274659695033, guid: 4a1e410fa0a604be6b774885948f8996, type: 3}
-  - {fileID: 3214713721700804775, guid: f4ba089034d0a4d1cb1eb821bc0a85fe, type: 3}
 --- !u!4 &596671086
 Transform:
   m_ObjectHideFlags: 0
@@ -4316,6 +4360,12 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 596671085}
+    - target: {fileID: 6178267446738953870, guid: 3cbadd297a9864dbf9ed053b1d1ce7af,
+        type: 3}
+      propertyPath: doublePointsBall
+      value: 
+      objectReference: {fileID: 4915510449480228976, guid: f6e8b38bb86bb457ba997569b5be7e4b,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cbadd297a9864dbf9ed053b1d1ce7af, type: 3}
 --- !u!1001 &8875630881938346796

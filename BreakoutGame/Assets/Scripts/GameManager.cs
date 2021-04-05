@@ -21,14 +21,14 @@ public class GameManager : MonoBehaviour
     public InputField nameInput;
     public GameObject gameOverPanel;
     public GameObject nextLevelPanel;
-    public Ball ball; 
-    public Transform[] levels;
+    public Ball ball;
     private LeaderBoard lb;
+    public Transform[] levels;
     private readonly string livesText = "Lives: ";
     private readonly string scoreText = "Score: ";
     private readonly string level = "Level1";
     private readonly string menu = "MainMenu";
-    private readonly string gball = "Ball";
+    //private readonly string gball = "Ball";
     private readonly string rBrick = "Red-Brick";
     private readonly string pBrick = "Pink-Brick";
     private readonly string gBrick = "Green-Brick";
@@ -114,17 +114,23 @@ public class GameManager : MonoBehaviour
     public void SaveScore()
     {
         string name = nameInput.text;
-        //LeaderBoard lb = gameObject.GetComponent<LeaderBoard>();
         lb.AddNewEntry(score, name);
         nameInput.gameObject.SetActive(false);
         highScoreLabel.text = "Congratulations " + name + "\n Your New Score is: " + score;
     }
 
 
-    public void AdjustScore(int change)
+    public void AdjustScore(int change, bool doublePoints)
     {
-        score += change;
-        scoreLabel.text = scoreText + score;
+        if (!doublePoints)
+        {
+            score += change;
+            scoreLabel.text = scoreText + score;
+        } else
+        {
+            score = score * 2;
+            scoreLabel.text = scoreText + score;
+        }
     }
 
     public void PlayAgain()

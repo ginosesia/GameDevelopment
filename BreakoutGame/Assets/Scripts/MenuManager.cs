@@ -14,30 +14,25 @@ public class MenuManager : MonoBehaviour
     public void Play()
     {
         SceneManager.LoadScene(play);
-        Debug.Log("Play");
     }
 
     public void Tutorial()
     {
         SceneManager.LoadScene(tutorial);
-        Debug.Log("Tutorial");
     }
 
     public void Options()
     {
         SceneManager.LoadScene(options);
-        Debug.Log("Options");
     }
 
     public void LeaderBoard()
     {
         SceneManager.LoadScene(leaderBoard);
-        Debug.Log("LeaderBoard");
     }
 
     public void Exit()
     {
        Application.Quit();
-       Debug.Log("Exit");
     }
 }

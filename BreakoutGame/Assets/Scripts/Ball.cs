@@ -12,10 +12,12 @@ public class Ball : MonoBehaviour
     public Transform GreenBrick;
     public Transform powerUp;
     public Transform doubleSpeed;
+    public Transform doublePointsBall;
     public Transform spawnBalls;
     private Collision2D spawnBallsCollision;
     private readonly int lifeLost = -1;
     private bool doubleSpeedDropped = false;
+    private bool doublePoints = false;
     public bool ballInPlay;
     public bool multipleBalls = false;
     public float ballSpeed;
@@ -80,7 +82,7 @@ public class Ball : MonoBehaviour
             if (brick.hitsNeeded > 1)
             {
                 brick.HitBrick();
-                gameManager.AdjustScore(brick.points);
+                gameManager.AdjustScore(brick.points, false);
             }
             else
             {
@@ -89,7 +91,7 @@ public class Ball : MonoBehaviour
                 if (collision.gameObject.CompareTag(bbrick)) PlayAnimation(BlueBrick, collision);
                 if (collision.gameObject.CompareTag(gbrick)) PlayAnimation(GreenBrick, collision);
 
-                gameManager.AdjustScore(brick.points);
+                gameManager.AdjustScore(brick.points, false);
                 gameManager.UpdateNumberOfBricks();
                 Destroy(collision.gameObject);
             }
@@ -105,15 +107,23 @@ public class Ball : MonoBehaviour
 
     private void SelectPowerUp(Collision2D collision)
     {
-        int random = Random.Range(1, 20);
-        if (random <= 8) DropDoubleSpeed(collision);
-        if (random >= 8 || random <= 16) DropExtraLife(collision);
-        if (random >= 17 && gameManager.numberOfBalls == 1)
-        {
-            Instantiate(spawnBalls, collision.transform.position, collision.transform.rotation);
-            multipleBalls = true;
-            spawnBallsCollision = collision;
-        }
+        int random = Random.Range(1, 100);
+        Debug.Log($"Random = {random}");
+        if (random <= 15 && gameManager.currentLevelNumber > 2) DropDoubleSpeed(collision);
+        if (random >= 20 && random <= 35 && gameManager.score <= 150) DropDoublePoints(collision);
+        if (random >= 35 && random <= 65 && gameManager.lives < 4) DropExtraLife(collision);
+        //if (random >= 92 && gameManager.numberOfBalls == 1)
+        //{
+        //    Instantiate(spawnBalls, collision.transform.position, collision.transform.rotation);
+        //    multipleBalls = true;
+        //    spawnBallsCollision = collision;
+        //}
+    }
+
+    private void DropDoublePoints(Collision2D collision)
+    {
+        if (!doublePoints) Instantiate(doublePointsBall, collision.transform.position, collision.transform.rotation);
+        doublePoints = true; 
     }
 
     public void DropMultipleBalls()
