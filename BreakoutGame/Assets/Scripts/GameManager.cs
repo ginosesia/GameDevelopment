@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int lives;
-    public int score;
-    public int numberOfBricks;
-    public int numberOfBalls = 1;
-    public int currentLevelNumber;
-    public float timer = 2;
-    public bool gameOver;
+    [HideInInspector] public int lives;
+    [HideInInspector] public int score;
+    [HideInInspector] public int numberOfBricks;
+    [HideInInspector] public int numberOfBalls = 1;
+    [HideInInspector] public int currentLevelNumber;
+    [HideInInspector] public float timer = 2;
+    [HideInInspector] public bool gameOver;
+    [SerializeField] private LeaderBoard lb;
+
     public static bool gameIsPaused = false;
     public Text scoreLabel;
     public Text livesLabel;
@@ -22,24 +24,20 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverPanel;
     public GameObject nextLevelPanel;
     public Ball ball;
-    private LeaderBoard lb;
     public Transform[] levels;
+    private readonly GameObject leaderBoardObject;
     private readonly string livesText = "Lives: ";
     private readonly string scoreText = "Score: ";
     private readonly string level = "Level1";
     private readonly string menu = "MainMenu";
-    //private readonly string gball = "Ball";
     private readonly string rBrick = "Red-Brick";
     private readonly string pBrick = "Pink-Brick";
     private readonly string gBrick = "Green-Brick";
     private readonly string bBrick = "Blue-Brick";
 
-
-
     // Start is called before the first frame update
     void Start()
     {
-        lb = GameObject.FindObjectOfType(typeof(LeaderBoard)) as LeaderBoard;
         livesLabel.text = livesText + lives;
         scoreLabel.text = scoreText + score;
         numberOfBricks = GameObject.FindGameObjectsWithTag(rBrick).Length
@@ -51,12 +49,18 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void AdjustLives(int change)
+    public void AdjustLives(int change, bool extraLife)
     {
         if (lives >= 1)
         {
-            lives += change;
-            livesLabel.text = livesText + lives;
+            if (lives == 1 && extraLife == false)
+            {
+                EndGame();
+            } else
+            {
+                lives += change;
+                livesLabel.text = livesText + lives;
+            }
         } else
         {
             EndGame();
@@ -149,4 +153,6 @@ public class GameManager : MonoBehaviour
     {
 
     }
+
+
 }

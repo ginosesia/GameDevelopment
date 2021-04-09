@@ -5,6 +5,7 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool gamePaused = false;
     public GameObject pauseMenu;
+    public GameObject leaderBoard;
     public GameManager gm;
     private readonly string menu = "MainMenu";
     private readonly string level = "Level1";
@@ -22,7 +23,6 @@ public class PauseMenu : MonoBehaviour
             }
         }
     }
-
 
     public void Resume()
     {
@@ -54,5 +54,15 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         gamePaused = false;
 
+    }
+
+    public void LeaderBoard()
+    {
+        leaderBoard.SetActive(true);
+    }
+
+    public void leaderBoardBackPressed()
+    {
+        leaderBoard.SetActive(false);
     }
 }

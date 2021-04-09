@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class LeaderBoard : MonoBehaviour
 {
-
-    public Transform entryContainer;
-    public Transform entryTemplate;
+    [SerializeField] private Transform entryContainer;
+    [SerializeField] private Transform entryTemplate;
     private List<Transform> listOfScoresTransform;
     private readonly string menu = "MainMenu";
 
@@ -37,7 +36,6 @@ public class LeaderBoard : MonoBehaviour
         {
             CreateEntry(score, entryContainer, listOfScoresTransform);
         }
-
     }
 
     private void CreateEntry(HighScore highScore, Transform container, List<Transform> transformList)

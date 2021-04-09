@@ -9,7 +9,7 @@ public class MenuManager : MonoBehaviour
     public string tutorial = "TutorialOrGame";
     public string play = "Level1";
     public string options = "Options";
-    public string leaderBoard = "LeaderBoard";
+    public string key = "Key";
 
     public void Play()
     {
@@ -26,13 +26,13 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(options);
     }
 
-    public void LeaderBoard()
-    {
-        SceneManager.LoadScene(leaderBoard);
-    }
-
     public void Exit()
     {
        Application.Quit();
+    }
+
+    public void ShowKey()
+    {
+        SceneManager.LoadScene(key);
     }
 }

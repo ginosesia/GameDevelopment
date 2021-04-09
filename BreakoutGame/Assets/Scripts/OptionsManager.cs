@@ -7,24 +7,20 @@ using UnityEngine.UI;
 public class OptionsManager : MonoBehaviour
 {
 
-    [SerializeField] private Text soundLevel;
-    [SerializeField] private Text musicLevel;
-    [SerializeField] private Slider soundSlider;
-    [SerializeField] private Slider musicSlider;
-    [SerializeField] private Toggle PowerUpsToggle;
-    [SerializeField] private Toggle MusicToggle;
-    [SerializeField] private Toggle SoundToggle;
+    public Toggle PowerUpsToggle;
+    public Toggle MusicToggle;
+    public Toggle SoundToggle;
 
-    private float soundSliderValue;
-    private float musicSliderValue;
     private string state;
     private bool toggleState;
+    private readonly string trueState = "True";
+    private readonly string falseState = "False";
+    private readonly string menu = "MainMenu";
     private static readonly string Sound = "Sound";
     private static readonly string Music = "Music";
     private static readonly string PowerUps = "PowerUps";
     private readonly string[] switches = { Sound, Music, PowerUps };
     private string SettingName;
-    private readonly string menu = "MainMenu";
 
     //All Public Methods below:
     public void Back()
@@ -34,7 +30,6 @@ public class OptionsManager : MonoBehaviour
 
     public void Start()
     {
-
         foreach (string togleSwitch in switches)
         {
             state = PlayerPrefs.GetString(togleSwitch);
@@ -46,7 +41,6 @@ public class OptionsManager : MonoBehaviour
     {
         SoundToggle = GameObject.Find(Sound).GetComponent<Toggle>();
         ToggleSwitch(SoundToggle);
-
     }
 
     public void HandleMusicToggleButtonPressed()
@@ -61,23 +55,11 @@ public class OptionsManager : MonoBehaviour
         ToggleSwitch(PowerUpsToggle);
     }
 
-    public void HandleSoundSliderChanged()
-    {
-        soundSliderValue = soundSlider.value;
-        soundLevel.text = soundSliderValue.ToString();
-    }
-
-    public void HandleMusicSliderChanged()
-    {
-        musicSliderValue = musicSlider.value;
-        musicLevel.text = musicSliderValue.ToString();
-    }
-
     //All Private Methods below:
     private void SetToggleSwitches(string state, string toggleSwitch)
     {
 
-        if (state == "True")
+        if (state == trueState)
         {
             toggleState = true;
         } else
@@ -106,10 +88,11 @@ public class OptionsManager : MonoBehaviour
         SettingName = toggle.name;
         if (toggle.isOn)
         {
-            PlayerPrefs.SetString(SettingName, "True");
-        } else
+            PlayerPrefs.SetString(SettingName, trueState);
+        }
+        else
         { 
-            PlayerPrefs.SetString(SettingName, "False");
+            PlayerPrefs.SetString(SettingName, falseState);
         }
     }
 }

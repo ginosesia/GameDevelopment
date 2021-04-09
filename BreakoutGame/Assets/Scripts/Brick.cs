@@ -9,6 +9,8 @@ public class Brick : MonoBehaviour
     public Sprite hitSprite;
     public Sprite secondHitSprite;
 
+     
+
     public void HitBrick()
     {
         hitsNeeded--;
