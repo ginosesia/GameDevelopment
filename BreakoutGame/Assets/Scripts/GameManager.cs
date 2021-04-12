@@ -15,16 +15,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LeaderBoard lb;
 
     public static bool gameIsPaused = false;
-    public Text scoreLabel;
-    public Text livesLabel;
+    [SerializeField] private Text scoreLabel;
+    [SerializeField] private Text livesLabel;
     public Text doubleSpeed;
-    public Text highScoreLabel;
-    public Text levelCompleteLabel;
-    public InputField nameInput;
-    public GameObject gameOverPanel;
-    public GameObject nextLevelPanel;
-    public Ball ball;
-    public Transform[] levels;
+    [SerializeField] private Text highScoreLabel;
+    [SerializeField] private Text levelCompleteLabel;
+    [SerializeField] private InputField nameInput;
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject nextLevelPanel;
+    [SerializeField] private Ball ball;
+    [SerializeField] private Transform[] levels;
     private readonly GameObject leaderBoardObject;
     private readonly string livesText = "Lives: ";
     private readonly string scoreText = "Score: ";

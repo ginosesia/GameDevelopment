@@ -25,13 +25,12 @@ public class Ball : MonoBehaviour
     [SerializeField] private AudioClip OutOfBoundsHit;
     [SerializeField] private AudioClip BrickHit;
 
-    private OptionsManager optionsManager;
     private Collision2D spawnBallsCollision;
     private readonly int lifeLost = -1;
-    private readonly bool powerUpSetting = false;
     private bool doubleSpeedDropped = false;
     private bool doublePoints = false;
     private readonly string jumpKey = "Jump";
+
     private readonly string outOfBounds = "OutOfBounds";
     private readonly string rbrick = "Red-Brick";
     private readonly string bbrick = "Blue-Brick";
@@ -40,6 +39,7 @@ public class Ball : MonoBehaviour
     private static readonly string Sound = "Sound";
     private static readonly string Music = "Music";
     private static readonly string PowerUps = "PowerUps";
+    private readonly float speed = 400f;
     private readonly string[] switches = { Sound, Music, PowerUps };
     private string state;
     private bool SoundState; 
@@ -51,6 +51,7 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         rigidBody.GetComponent<Rigidbody2D>();
+        SetBallColor(Color.red);
     }
 
     // Update is called once per frame
@@ -102,6 +103,11 @@ public class Ball : MonoBehaviour
         }
     }
 
+    public void SetBallColor(Color color)
+    {
+        rigidBody.GetComponent<SpriteRenderer>().color = color;
+    }
+
     public void SetBallPosition()
     {
         transform.position = paddle.position;
@@ -111,7 +117,7 @@ public class Ball : MonoBehaviour
     {
         if (test == 1)
         {
-            ballSpeed = 400f;
+            ballSpeed = speed;
         }
         else
         {

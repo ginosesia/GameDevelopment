@@ -9,7 +9,7 @@ public class Brick : MonoBehaviour
     public Sprite hitSprite;
     public Sprite secondHitSprite;
 
-     
+    public int Length { get; internal set; }
 
     public void HitBrick()
     {

@@ -55,6 +55,8 @@ public class OptionsManager : MonoBehaviour
         ToggleSwitch(PowerUpsToggle);
     }
 
+
+
     //All Private Methods below:
     private void SetToggleSwitches(string state, string toggleSwitch)
     {

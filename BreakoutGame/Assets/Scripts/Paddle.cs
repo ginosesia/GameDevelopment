@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Paddle : MonoBehaviour
 {
+
     public float speed;
     public float rightBoundary;
     public float leftBoundary;
@@ -73,4 +74,10 @@ public class Paddle : MonoBehaviour
     {
         GetComponent<AudioSource>().PlayOneShot(audio);
     }
+
+    public void SetPaddleColor(Color color)
+    {
+        //rigidBody.GetComponent<SpriteRenderer>().color = color;
+    }
+
 }
