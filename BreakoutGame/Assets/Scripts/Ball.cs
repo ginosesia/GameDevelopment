@@ -51,13 +51,14 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         rigidBody.GetComponent<Rigidbody2D>();
-        SetBallColor(Color.red);
+        CheckGameOptionsStates();
+        //SetBallColor(Color.red);
     }
 
     // Update is called once per frame
     private void Update()
     {
-        CheckGameOptionsStates();
+        
         if (gameManager.numberOfBricks == 0) SetBallPosition();
         else
         {
@@ -153,7 +154,8 @@ public class Ball : MonoBehaviour
 
     private void PlayAnimation(Transform transform, Collision2D collision)
     {
-        PlayClip(PaddleHit);
+        Debug.Log(SoundState);
+        if (SoundState) PlayClip(PaddleHit);
         Transform animation = Instantiate(transform, collision.transform.position, collision.transform.rotation);
         Destroy(animation.gameObject, 1.5f);
         SelectPowerUp(collision);

@@ -51,14 +51,13 @@ public class LeaderBoard : MonoBehaviour
         string rankString;
         if (rank <= 10)
         {
-            switch (rank)
+            rankString = rank switch
             {
-                default: rankString = rank + "th"; break;
-                case 1: rankString = "1st"; break;
-                case 2: rankString = "2nd"; break;
-                case 3: rankString = "3rd"; break;
-            }
-
+                1 => "1st",
+                2 => "2nd",
+                3 => "3rd",
+                _ => rank + "th",
+            };
             int score = highScore.score;
             string name = highScore.name;
             entryObject.Find("PositionEntry").GetComponent<Text>().text = rankString;

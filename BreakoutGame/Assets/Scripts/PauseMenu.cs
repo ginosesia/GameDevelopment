@@ -7,20 +7,28 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject leaderBoard;
     public GameManager gm;
-    private readonly string menu = "MainMenu";
+    [SerializeField] private GameObject mainMenu;
     private readonly string level = "Level1";
+
+    private void Start()
+    {
+        
+    }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+
+    }
+
+    public void ShowPauseMenu()
+    {
+        if (gamePaused)
         {
-            if(gamePaused)
-            {
-                Resume();
-            } else
-            {
-                if (gm.gameOver == false) Pause();
-            }
+            Resume();
+        }
+        else
+        {
+            if (gm.gameOver == false) Pause();
         }
     }
 
@@ -41,8 +49,7 @@ public class PauseMenu : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(menu);
-        pauseMenu.SetActive(false);
+        mainMenu.SetActive(true);
         Time.timeScale = 1f;
         gamePaused = false;
     }

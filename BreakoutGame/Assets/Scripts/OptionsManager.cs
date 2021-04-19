@@ -11,6 +11,8 @@ public class OptionsManager : MonoBehaviour
     public Toggle MusicToggle;
     public Toggle SoundToggle;
 
+    [SerializeField] Ball ball;
+
     private string state;
     private bool toggleState;
     private readonly string trueState = "True";
@@ -33,6 +35,7 @@ public class OptionsManager : MonoBehaviour
         foreach (string togleSwitch in switches)
         {
             state = PlayerPrefs.GetString(togleSwitch);
+            Debug.Log($"{togleSwitch} + {state}");
             SetToggleSwitches(state, togleSwitch);
         }
     }

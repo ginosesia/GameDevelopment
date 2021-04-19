@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject nextLevelPanel;
     [SerializeField] private Ball ball;
     [SerializeField] private Transform[] levels;
+    [SerializeField] private PauseMenu pm;
     private readonly GameObject leaderBoardObject;
     private readonly string livesText = "Lives: ";
     private readonly string scoreText = "Score: ";
@@ -48,6 +49,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pm.ShowPauseMenu();
+        }
+    }
 
     public void AdjustLives(int change, bool extraLife)
     {
@@ -148,11 +156,4 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(menu);
     }
-
-    public void WatchReplay()
-    {
-
-    }
-
-
 }
