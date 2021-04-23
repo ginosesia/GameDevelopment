@@ -8,10 +8,7 @@ public class OptionsManager : MonoBehaviour
 {
 
     public Toggle PowerUpsToggle;
-    public Toggle MusicToggle;
     public Toggle SoundToggle;
-
-    [SerializeField] Ball ball;
 
     private string state;
     private bool toggleState;
@@ -19,9 +16,8 @@ public class OptionsManager : MonoBehaviour
     private readonly string falseState = "False";
     private readonly string menu = "MainMenu";
     private static readonly string Sound = "Sound";
-    private static readonly string Music = "Music";
     private static readonly string PowerUps = "PowerUps";
-    private readonly string[] switches = { Sound, Music, PowerUps };
+    private readonly string[] switches = { Sound, PowerUps };
     private string SettingName;
 
     //All Public Methods below:
@@ -35,7 +31,6 @@ public class OptionsManager : MonoBehaviour
         foreach (string togleSwitch in switches)
         {
             state = PlayerPrefs.GetString(togleSwitch);
-            Debug.Log($"{togleSwitch} + {state}");
             SetToggleSwitches(state, togleSwitch);
         }
     }
@@ -44,12 +39,6 @@ public class OptionsManager : MonoBehaviour
     {
         SoundToggle = GameObject.Find(Sound).GetComponent<Toggle>();
         ToggleSwitch(SoundToggle);
-    }
-
-    public void HandleMusicToggleButtonPressed()
-    {
-        MusicToggle = GameObject.Find(Music).GetComponent<Toggle>();
-        ToggleSwitch(MusicToggle);
     }
 
     public void HandlePowerUpToggleButtonPressed()
@@ -74,9 +63,6 @@ public class OptionsManager : MonoBehaviour
 
         switch (toggleSwitch)
         {
-            case "Music":
-                MusicToggle.isOn = toggleState;
-                break;
             case "Sound":
                 SoundToggle.isOn = toggleState;
                 break;

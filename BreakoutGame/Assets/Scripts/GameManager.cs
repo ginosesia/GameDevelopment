@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [HideInInspector] public int lives;
+    public int lives;
+    public Text doubleSpeed;
+    public bool gameIsPaused = false;
+
     [HideInInspector] public int score;
     [HideInInspector] public int numberOfBricks;
     [HideInInspector] public int numberOfBalls = 1;
@@ -13,11 +16,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public float timer = 2;
     [HideInInspector] public bool gameOver;
     [SerializeField] private LeaderBoard lb;
-
-    public static bool gameIsPaused = false;
     [SerializeField] private Text scoreLabel;
     [SerializeField] private Text livesLabel;
-    public Text doubleSpeed;
     [SerializeField] private Text highScoreLabel;
     [SerializeField] private Text levelCompleteLabel;
     [SerializeField] private InputField nameInput;
@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
             scoreLabel.text = scoreText + score;
         } else
         {
-            score = score * 2;
+            score *= 2;
             scoreLabel.text = scoreText + score;
         }
     }

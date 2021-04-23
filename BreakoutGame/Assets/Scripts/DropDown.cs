@@ -7,31 +7,30 @@ public class DropDown : MonoBehaviour
 {
     public TextMeshProUGUI BallColor;
     public TextMeshProUGUI PaddleColor;
-
-    private Ball ball;
-    private Paddle paddle;
+    private readonly string ballColor = "BallColor";
+    private readonly string paddleColor = "paddleColor";
 
     public void HandleBallChanges(int val)
     {
         switch (val)
         {
             case 0:
-                ball.SetBallColor(Color.red);
+                PlayerPrefs.SetInt(ballColor, 0);
                 break;
             case 1:
-                ball.SetBallColor(Color.green);
+                PlayerPrefs.SetInt(ballColor, 1);
                 break;
             case 2:
-                ball.SetBallColor(Color.blue);
+                PlayerPrefs.SetInt(ballColor, 2);
                 break;
             case 3:
-                ball.SetBallColor(Color.magenta);
+                PlayerPrefs.SetInt(ballColor, 3);
                 break;
             case 4:
-                ball.SetBallColor(Color.yellow);
+                PlayerPrefs.SetInt(ballColor, 4);
                 break;
             case 5:
-                ball.SetBallColor(Color.white);
+                PlayerPrefs.SetInt(ballColor, 5);
                 break;
         }
     }
@@ -41,22 +40,22 @@ public class DropDown : MonoBehaviour
         switch (val)
         {
             case 0:
-                paddle.SetPaddleColor(Color.red);
+                PlayerPrefs.SetInt(paddleColor, 0);
                 break;
             case 1:
-                paddle.SetPaddleColor(Color.green);
+                PlayerPrefs.SetInt(paddleColor, 1);
                 break;
             case 2:
-                paddle.SetPaddleColor(Color.blue);
+                PlayerPrefs.SetInt(paddleColor, 2);
                 break;
             case 3:
-                paddle.SetPaddleColor(Color.magenta);
+                PlayerPrefs.SetInt(paddleColor, 3);
                 break;
             case 4:
-                paddle.SetPaddleColor(Color.yellow);
+                PlayerPrefs.SetInt(paddleColor, 4);
                 break;
             case 5:
-                paddle.SetPaddleColor(Color.white);
+                PlayerPrefs.SetInt(paddleColor, 5);
                 break;
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Paddle : MonoBehaviour
 {
@@ -8,9 +9,20 @@ public class Paddle : MonoBehaviour
     public float speed;
     public float rightBoundary;
     public float leftBoundary;
-    public GameManager gameManager;
     public Ball ball;
-    [SerializeField] private AudioClip powerUp;
+    public GameManager gameManager;
+    [SerializeField] SoundManager soundManager;
+    [SerializeField] private OptionsStates optionsStates;
+    private Image paddle;
+    public Rigidbody2D rigidBody;
+
+    // Start is called before the first frame update
+    private void Start()
+    {
+        rigidBody = rigidBody.GetComponent<Rigidbody2D>();
+        SetPaddleColor();
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -21,12 +33,10 @@ public class Paddle : MonoBehaviour
         //Check if paddle reached right or left boundary
         if (transform.position.x < leftBoundary)
         {
-            //PlayClip(powerUp);
             transform.position = new Vector2(leftBoundary, transform.position.y);
         }
         if (transform.position.x > rightBoundary)
         {
-            //PlayClip(powerUp);
             transform.position = new Vector2(rightBoundary, transform.position.y);
         }
     }
@@ -38,14 +48,9 @@ public class Paddle : MonoBehaviour
         {
             gameManager.AdjustLives(1, true);
             Destroy(collision.gameObject);
-            //PlayClip(powerUp);
+            soundManager.PlaySound(2);
+ 
         }
-
-        //if (collision.CompareTag("SpawnBalls"))
-        //{
-        //    Destroy(collision.gameObject);
-        //    ball.DropMultipleBalls();
-        //}
 
         if (collision.CompareTag("DoubleSpeed"))
         {
@@ -53,14 +58,14 @@ public class Paddle : MonoBehaviour
             Destroy(collision.gameObject);
             gameManager.doubleSpeed.gameObject.SetActive(true);
             Invoke(nameof(SetNormalSpeed), 10);
-            //PlayClip(powerUp);
+            soundManager.PlaySound(2);
         }
 
         if (collision.CompareTag("doublePointsBall"))
         {
             Destroy(collision.gameObject);
             gameManager.AdjustScore(0, true);
-            //PlayClip(powerUp);
+            soundManager.PlaySound(2);
         }
     }
 
@@ -70,14 +75,30 @@ public class Paddle : MonoBehaviour
         gameManager.doubleSpeed.gameObject.SetActive(false);
     }
 
-    private void PlayClip(AudioClip audio)
+    public void SetPaddleColor()
     {
-        GetComponent<AudioSource>().PlayOneShot(audio);
-    }
-
-    public void SetPaddleColor(Color color)
-    {
-        //rigidBody.GetComponent<SpriteRenderer>().color = color;
+        paddle = rigidBody.GetComponent<Image>();
+        switch (optionsStates.ballColorValue)
+        {
+            case 0:
+                paddle.color = Color.white;
+                break;
+            case 1:
+                paddle.color = Color.green;
+                break;
+            case 2:
+                paddle.color = Color.blue;
+                break;
+            case 3:
+                paddle.color = Color.magenta;
+                break;
+            case 4:
+                paddle.color = Color.yellow;
+                break;
+            case 5:
+                paddle.color = Color.white;
+                break;
+        }
     }
 
 }
