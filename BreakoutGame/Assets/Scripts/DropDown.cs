@@ -1,63 +1,57 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(Dropdown))]
 public class DropDown : MonoBehaviour
 {
-    public TextMeshProUGUI BallColor;
-    public TextMeshProUGUI PaddleColor;
-    private readonly string ballColor = "BallColor";
-    private readonly string paddleColor = "paddleColor";
+    private Dropdown dropdown;
+    private string playerPref = "Color";
 
-    public void HandleBallChanges(int val)
+    private void Awake()
     {
-        switch (val)
+        dropdown = GetComponent<Dropdown>();
+        dropdown.onValueChanged.AddListener(new UnityAction<int>(index =>
         {
-            case 0:
-                PlayerPrefs.SetInt(ballColor, 0);
-                break;
-            case 1:
-                PlayerPrefs.SetInt(ballColor, 1);
-                break;
-            case 2:
-                PlayerPrefs.SetInt(ballColor, 2);
-                break;
-            case 3:
-                PlayerPrefs.SetInt(ballColor, 3);
-                break;
-            case 4:
-                PlayerPrefs.SetInt(ballColor, 4);
-                break;
-            case 5:
-                PlayerPrefs.SetInt(ballColor, 5);
-                break;
-        }
+            HandleChanges(dropdown.value);
+            PlayerPrefs.Save();
+        }));
+
     }
 
-    public void HandlePaddleChanges(int val)
+    private void Start()
     {
+        dropdown.value = PlayerPrefs.GetInt(playerPref, 0);
+    }
+
+
+    public void HandleChanges(int val)
+    {
+
         switch (val)
         {
             case 0:
-                PlayerPrefs.SetInt(paddleColor, 0);
+                PlayerPrefs.SetInt(playerPref, 0);
                 break;
             case 1:
-                PlayerPrefs.SetInt(paddleColor, 1);
+                PlayerPrefs.SetInt(playerPref, 1);
                 break;
             case 2:
-                PlayerPrefs.SetInt(paddleColor, 2);
+                PlayerPrefs.SetInt(playerPref, 2);
                 break;
             case 3:
-                PlayerPrefs.SetInt(paddleColor, 3);
+                PlayerPrefs.SetInt(playerPref, 3);
                 break;
             case 4:
-                PlayerPrefs.SetInt(paddleColor, 4);
+                PlayerPrefs.SetInt(playerPref, 4);
                 break;
             case 5:
-                PlayerPrefs.SetInt(paddleColor, 5);
+                PlayerPrefs.SetInt(playerPref, 5);
                 break;
         }
+
     }
 
 }

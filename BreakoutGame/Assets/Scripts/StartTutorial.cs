@@ -9,7 +9,7 @@ public class StartTutorial : MonoBehaviour
     public Text tutorialStep;
     public Button nextButton;
     private int step = 0;
-    private readonly string level = "Level1";
+    private readonly string level = "Game";
 
     // Start is called before the first frame update
     void Start()

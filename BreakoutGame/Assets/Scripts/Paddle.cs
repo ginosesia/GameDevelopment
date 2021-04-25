@@ -11,9 +11,11 @@ public class Paddle : MonoBehaviour
     public float leftBoundary;
     public Ball ball;
     public GameManager gameManager;
-    [SerializeField] SoundManager soundManager;
+    [SerializeField] private SoundManager soundManager;
     [SerializeField] private OptionsStates optionsStates;
+    [SerializeField] private PowerUpCollected powerUpCollected;
     private Image paddle;
+    private int value;
     public Rigidbody2D rigidBody;
 
     // Start is called before the first frame update
@@ -43,45 +45,18 @@ public class Paddle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (collision.CompareTag("ExtraLifePowerUp"))
-        {
-            gameManager.AdjustLives(1, true);
-            Destroy(collision.gameObject);
-            soundManager.PlaySound(2);
- 
-        }
-
-        if (collision.CompareTag("DoubleSpeed"))
-        {
-            ball.SetBallSpeed((float)1.75);
-            Destroy(collision.gameObject);
-            gameManager.doubleSpeed.gameObject.SetActive(true);
-            Invoke(nameof(SetNormalSpeed), 10);
-            soundManager.PlaySound(2);
-        }
-
-        if (collision.CompareTag("doublePointsBall"))
-        {
-            Destroy(collision.gameObject);
-            gameManager.AdjustScore(0, true);
-            soundManager.PlaySound(2);
-        }
+        powerUpCollected.PowerUpCollection(collision);
     }
 
-    public void SetNormalSpeed()
-    {
-        ball.SetBallSpeed(1);
-        gameManager.doubleSpeed.gameObject.SetActive(false);
-    }
 
     public void SetPaddleColor()
     {
         paddle = rigidBody.GetComponent<Image>();
-        switch (optionsStates.ballColorValue)
+        value = optionsStates.GetColor();
+        switch (value)
         {
             case 0:
-                paddle.color = Color.white;
+                paddle.color = Color.red;
                 break;
             case 1:
                 paddle.color = Color.green;

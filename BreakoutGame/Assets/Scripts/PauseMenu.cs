@@ -7,7 +7,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject leaderBoard;
     public GameManager gm;
-    private readonly string level = "Level1";
+    private readonly string level = "Game";
     private readonly string mainMenu = "MainMenu";
 
     public void ShowPauseMenu()

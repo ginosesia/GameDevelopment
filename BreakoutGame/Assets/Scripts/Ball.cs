@@ -20,6 +20,7 @@ public class Ball : MonoBehaviour
     [SerializeField] private PowerUpManager powerUpManager;
     [SerializeField] private OptionsStates optionsStates;
     private SpriteRenderer ball;
+    private int value;
     private readonly int lifeLost = -1;
     private readonly string jumpKey = "Jump";
     private readonly string outOfBounds = "OutOfBounds";
@@ -58,10 +59,11 @@ public class Ball : MonoBehaviour
     private void GetBallColor()
     {
         ball = rigidBody.GetComponent<SpriteRenderer>();
-        switch (optionsStates.ballColorValue)
+        value = optionsStates.GetColor();
+        switch (value)
         {
             case 0:
-                ball.color = Color.white;
+                ball.color = Color.red;
                 break;
             case 1:
                 ball.color = Color.green;

@@ -6,15 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public string tutorial = "TutorialOrGame";
-    public string play = "Level1";
+    public string tutorial = "Tutorial";
+    public string gamemode = "GameMode";
     public string options = "Options";
     public string key = "Key";
 
-    public void Play()
-    {
-        SceneManager.LoadScene(play);
-    }
 
     public void Tutorial()
     {
@@ -34,5 +30,11 @@ public class MenuManager : MonoBehaviour
     public void ShowKey()
     {
         SceneManager.LoadScene(key);
+
+    }
+
+    public void GameMode()
+    {
+        SceneManager.LoadScene(gamemode);
     }
 }

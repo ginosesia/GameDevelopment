@@ -8,7 +8,6 @@ public class ActionReplay : MonoBehaviour
     private List<ActionReplayRecord> records = new List<ActionReplayRecord>();
     private bool isInReplayMode;
     private Rigidbody rigidbody;
-    [SerializeField] private GameManager gameManager;
 
 
     // Start is called before the first frame update
@@ -20,44 +19,22 @@ public class ActionReplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.R))
-        //{
-        //    isInReplayMode = !isInReplayMode;
-
-        //    if (isInReplayMode)
-        //    {
-        //        SetTransform(0);
-        //        rigidbody.isKinematic = true;
-        //        gameManager.gameIsPaused = true;
-        //    }
-        //    else
-        //    {
-        //        SetTransform(records.Count - 1);
-        //        rigidbody.isKinematic = false;
-        //    }
-        //}
-    }
-
-    public void Replay()
-    {
-        //if (Input.GetKeyDown(KeyCode.R))
-        //{
+        if (Input.GetKeyDown(KeyCode.R))
+        {
             isInReplayMode = !isInReplayMode;
 
             if (isInReplayMode)
             {
                 SetTransform(0);
                 rigidbody.isKinematic = true;
-                gameManager.gameIsPaused = true;
             }
             else
             {
                 SetTransform(records.Count - 1);
                 rigidbody.isKinematic = false;
             }
-        //}
+        }
     }
-
 
     private void FixedUpdate()
     {

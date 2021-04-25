@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class OptionsStates : MonoBehaviour
 {
+    public int ColorValue;
+
     [HideInInspector] public bool SoundState;
     [HideInInspector] public bool PowerUpsState;
-
     private static readonly string Sound = "Sound";
     private static readonly string PowerUps = "PowerUps";
-    private readonly string ballColor = "BallColor";
-    private readonly string paddleColor = "paddleColor";
-
-    private string state;
-    public int ballColorValue;
-    public int paddleColorValue;
+    private readonly string color = "Color";
     private readonly string[] switches = { Sound, PowerUps };
+    private string state;
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,17 +41,9 @@ public class OptionsStates : MonoBehaviour
         }
     }
 
-    private void GetBallColor()
+    public int GetColor()
     {
-        ballColorValue = PlayerPrefs.GetInt(ballColor);
+        return ColorValue = PlayerPrefs.GetInt(color);
     }
-
-
-    private void GetPaddleColor()
-    {
-        paddleColorValue = PlayerPrefs.GetInt(paddleColor);
-    }
-
-
 
 }

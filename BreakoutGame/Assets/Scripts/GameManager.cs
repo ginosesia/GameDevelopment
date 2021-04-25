@@ -15,21 +15,24 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int currentLevelNumber;
     [HideInInspector] public float timer = 2;
     [HideInInspector] public bool gameOver;
+
     [SerializeField] private LeaderBoard lb;
     [SerializeField] private Text scoreLabel;
     [SerializeField] private Text livesLabel;
     [SerializeField] private Text highScoreLabel;
     [SerializeField] private Text levelCompleteLabel;
+    [SerializeField] private Text powerUp;
     [SerializeField] private InputField nameInput;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject nextLevelPanel;
     [SerializeField] private Ball ball;
     [SerializeField] private Transform[] levels;
     [SerializeField] private PauseMenu pm;
+
     private readonly GameObject leaderBoardObject;
     private readonly string livesText = "Lives: ";
     private readonly string scoreText = "Score: ";
-    private readonly string level = "Level1";
+    private readonly string level = "Game";
     private readonly string menu = "MainMenu";
     private readonly string rBrick = "Red-Brick";
     private readonly string pBrick = "Pink-Brick";
@@ -39,6 +42,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        powerUp.gameObject.SetActive(false);
         livesLabel.text = livesText + lives;
         scoreLabel.text = scoreText + score;
         numberOfBricks = GameObject.FindGameObjectsWithTag(rBrick).Length

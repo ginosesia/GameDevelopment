@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Brick.cs" />
     <Compile Include="Assets\Scripts\DropDown.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\GameMode.cs" />
     <Compile Include="Assets\Scripts\Key.cs" />
     <Compile Include="Assets\Scripts\LeaderBoard.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Assets\Scripts\OptionsStates.cs" />
     <Compile Include="Assets\Scripts\Paddle.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\PowerUpCollected.cs" />
     <Compile Include="Assets\Scripts\PowerUpManager.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Scripts\StartTutorial.cs" />
