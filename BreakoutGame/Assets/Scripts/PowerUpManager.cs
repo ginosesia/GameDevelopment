@@ -6,17 +6,21 @@ public class PowerUpManager : MonoBehaviour
 {
 
     public float speed;
+    private int score;
+    [HideInInspector] public bool coloredBallDroped = false;
+    [HideInInspector] public bool ballIsMultiColoured = false;
+
 
     [SerializeField] private OptionsStates optionsStates;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private SoundManager soundManager;
     [SerializeField] private Transform doublePointsBall;
     [SerializeField] private Transform extraLife;
-    [SerializeField] private Transform doubleSpeed;
+    [SerializeField] private Transform multiColoredBall;
+    [SerializeField] private Transform doubleSpeedBall;
 
-    private bool doubleSpeedDropped = false;
     private bool doublePoints = false;
-
+    
 
     // Update is called once per frame
     void Update()
@@ -29,15 +33,34 @@ public class PowerUpManager : MonoBehaviour
         }
     }
 
-
     public void SelectPowerUp(Collision2D collision)
     {
+        score = gameManager.score;
+
         if (optionsStates.PowerUpsState)
         {
             int random = Random.Range(1, 100);
-            if (random <= 15 && gameManager.currentLevelNumber > 2) DropDoubleSpeed(collision);
-            if (random >= 20 && random <= 35 && gameManager.score <= 150) DropDoublePoints(collision);
+            if (!ballIsMultiColoured && random < 20)
+            {
+                if (!coloredBallDroped)
+                {
+                    DropMultiColoredBall(collision);
+                    coloredBallDroped = true;
+                }
+            }
+            if (random >= 20 && random <= 35 && score <= 200)
+            {
+                DropDoublePoints(collision);
+                
+            }
+
+            if (random >= 50 && random <= 65)
+            {
+                DropDoubleSpeedBall(collision);
+            } 
+
             if (random >= 35 && random <= 65 && gameManager.lives < 4) DropExtraLife(collision);
+
         }
     }
 
@@ -57,13 +80,14 @@ public class PowerUpManager : MonoBehaviour
         }
     }
 
-    private void DropDoubleSpeed(Collision2D collision)
+    private void DropMultiColoredBall(Collision2D collision)
     {
-        int random = Random.Range(1, 101);
-        if (random < 15) if (!doubleSpeedDropped)
-        {
-            Instantiate(doubleSpeed, collision.transform.position, collision.transform.rotation);
-            doubleSpeedDropped = true;
-        }
+        Instantiate(multiColoredBall, collision.transform.position, collision.transform.rotation);
+    }
+
+
+    private void DropDoubleSpeedBall(Collision2D collision)
+    {
+        Instantiate(doubleSpeedBall, collision.transform.position, collision.transform.rotation);
     }
 }

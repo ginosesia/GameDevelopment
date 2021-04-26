@@ -1,29 +1,28 @@
 ﻿<Properties StartupConfiguration="{32D65D90-F439-2870-AEF3-269D4203D106}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ActionReplay.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PowerUpManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/DropDown.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/OptionsManager.cs" Line="64" Column="30" />
-      <File FileName="Assets/Scripts/ActionReplayRecord.cs" Line="13" Column="1" />
-      <File FileName="Assets/Scripts/ActionReplay.cs" Line="11" Column="1" />
-      <File FileName="Assets/Scripts/PowerUpManager.cs" Line="34" Column="6" />
-      <File FileName="Assets/Scripts/OptionsStates.cs" Line="27" Column="49" />
-      <File FileName="Assets/Scripts/SoundManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/LeaderBoard.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="61" Column="10" />
-      <File FileName="Assets/Scripts/Ball.cs" Line="80" Column="20" />
-      <File FileName="Assets/Scripts/Key.cs" Line="14" Column="2" />
-      <File FileName="Assets/Scripts/PauseMenu.cs" Line="15" Column="24" />
-      <File FileName="Assets/Scripts/Brick.cs" Line="17" Column="22" />
-      <File FileName="Assets/Scripts/MenuManager.cs" Line="34" Column="6" />
-      <File FileName="Assets/Scripts/Paddle.cs" Line="48" Column="55" />
-      <File FileName="Assets/Scripts/PowerUpCollected.cs" Line="61" Column="6" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/DropDown.cs" />
+      <File FileName="Assets/Scripts/OptionsManager.cs" />
+      <File FileName="Assets/Scripts/PowerUpManager.cs" Line="62" Column="82" />
+      <File FileName="Assets/Scripts/OptionsStates.cs" />
+      <File FileName="Assets/Scripts/SoundManager.cs" Line="24" Column="1" />
+      <File FileName="Assets/Scripts/LeaderBoard.cs" />
+      <File FileName="Assets/Scripts/Ball.cs" Line="14" Column="49" />
+      <File FileName="Assets/Scripts/Key.cs" />
+      <File FileName="Assets/Scripts/PauseMenu.cs" />
+      <File FileName="Assets/Scripts/Brick.cs" Line="17" Column="1" />
+      <File FileName="Assets/Scripts/MenuManager.cs" />
+      <File FileName="Assets/Scripts/Paddle.cs" Line="17" Column="1" />
+      <File FileName="Assets/Scripts/PowerUpCollected.cs" Line="31" Column="46" />
       <File FileName="Assets/Scripts/GameMode.cs" Line="19" Column="6" />
-      <File FileName="Assets/Scripts/StartTutorial.cs" Line="14" Column="53" />
+      <File FileName="Assets/Scripts/StartTutorial.cs" />
+      <File FileName="Assets/Scripts/ActionReplay.cs" Line="16" Column="47" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="83843709-2b46-47ac-aaf7-2957d0370d05" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="835e9804-4d21-41a9-968a-f43fc0f13622" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

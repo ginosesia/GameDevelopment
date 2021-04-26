@@ -96,6 +96,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  coloredBallDroped: 0
+  ballIsMultiColoured: 0
+  optionsStates: {fileID: 0}
+  gameManager: {fileID: 0}
+  soundManager: {fileID: 0}
+  doublePointsBall: {fileID: 0}
+  extraLife: {fileID: 0}
+  multiColoredBall: {fileID: 0}
 --- !u!58 &4915510449480228877
 CircleCollider2D:
   m_ObjectHideFlags: 0

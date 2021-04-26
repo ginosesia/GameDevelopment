@@ -155,4 +155,6 @@ public class Ball : MonoBehaviour
         //Select power up when brick is hit
         powerUpManager.SelectPowerUp(collision);
     }
+
+    
 }
