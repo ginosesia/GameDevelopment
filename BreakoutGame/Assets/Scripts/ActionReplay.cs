@@ -1,19 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class ActionReplay : MonoBehaviour
 {
 
-    private List<ActionReplayRecord> records = new List<ActionReplayRecord>();
+    private List<ActionReplayRecord> actionReplayRecords = new List<ActionReplayRecord>();
     private bool isInReplayMode;
-    private Rigidbody rigidbody;
+    private Rigidbody2D rigidbody;
+    private int currentIndex;
 
+    [SerializeField] private Ball ball;
+    [SerializeField] private Paddle paddle;
+    [SerializeField] private Text replayIndicator;
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -26,33 +31,49 @@ public class ActionReplay : MonoBehaviour
             if (isInReplayMode)
             {
                 SetTransform(0);
-                rigidbody.isKinematic = true;
+                SetModes(true);
             }
             else
             {
-                SetTransform(records.Count - 1);
-                rigidbody.isKinematic = false;
+                SetTransform(actionReplayRecords.Count - 1);
+                SetModes(false);
             }
         }
+    }
+    private void SetModes(bool state)
+    {
+        ball.inReplayMode = state;
+        paddle.inReplayMode = state;
+        rigidbody.isKinematic = state;
+        replayIndicator.gameObject.SetActive(state);
     }
 
     private void FixedUpdate()
     {
         if (!isInReplayMode)
         {
-            records.Add(new ActionReplayRecord
+            actionReplayRecords.Add(new ActionReplayRecord
             {
                 position = transform.position,
-                rotation = transform.rotation
             });
+        }
+        else
+        {
+            int nextIndex = currentIndex + 1;
+            if (nextIndex < actionReplayRecords.Count)
+            {
+                SetTransform(nextIndex);
+            } else if (nextIndex == actionReplayRecords.Count) {
+                isInReplayMode = false;
+                SetModes(false);
+            }
         }
     }
 
     private void SetTransform(int index)
     {
-        ActionReplayRecord actionReplayRecord = records[index];
-
+        currentIndex = index;
+        ActionReplayRecord actionReplayRecord = actionReplayRecords[index];
         transform.position = actionReplayRecord.position;
-        transform.rotation = actionReplayRecord.rotation;
     }
 }

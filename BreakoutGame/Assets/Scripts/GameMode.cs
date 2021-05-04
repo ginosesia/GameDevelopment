@@ -6,18 +6,28 @@ using UnityEngine.SceneManagement;
 
 public class GameMode : MonoBehaviour
 {
+    private Paddle paddle;
 
-    private readonly string level = "Game";
+    private readonly string multiplayer = "true";
+    private readonly string singleplayer = "false";
+    private readonly string multiPlayerLevel = "Multiplayer-Game";
+    private readonly string singlePlayerLevel = "Singleplayer-Game";
 
     public void Singleplayer()
     {
-        SceneManager.LoadScene(level);
-
+        SetMultiplayer(singleplayer);
+        SceneManager.LoadScene(singlePlayerLevel);
     }
 
     public void Multiplayer()
     {
-        SceneManager.LoadScene(level);
+        SetMultiplayer(multiplayer);
+        SceneManager.LoadScene(multiPlayerLevel);
+    }
+
+    private void SetMultiplayer(string state)
+    {
+        PlayerPrefs.SetString("multiplayer", state);
     }
 
 }

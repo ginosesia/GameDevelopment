@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6955426765314918098}
   - component: {fileID: 6955426765314918099}
   - component: {fileID: 6955426765314918124}
+  - component: {fileID: 1455516836748585049}
   m_Layer: 0
   m_Name: Blue-Brick
   m_TagString: Blue-Brick
@@ -96,6 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 5
+  hitsNeeded: 0
+  hitSprite: {fileID: 0}
+  secondHitSprite: {fileID: 0}
 --- !u!61 &6955426765314918124
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -122,3 +126,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &1455516836748585049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6955426765314918125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecc76cb924f74d2497f2ddabdc66bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}

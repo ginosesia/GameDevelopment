@@ -5,11 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
-    public int lives;
-    public int score;
-    public int numberOfBricks;
-    public int levelNumber = 1;
-    public int currentLevelNumber;
+    private int lives = 10;
+    private int score;
+    private int numberOfBricks;
     public bool gameOver;
     public static bool gameIsPaused = false;
     public Text scoreLabel;
@@ -28,6 +26,7 @@ public class TutorialManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerPrefs.SetString("multiplayer", "false");
         livesLabel.text = livesText + lives;
         scoreLabel.text = scoreText + score;
         numberOfBricks = GameObject.FindGameObjectsWithTag(rBrick).Length
@@ -53,19 +52,6 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    public void UpdateNumberOfBricks()
-    {
-        numberOfBricks--;
-        if (numberOfBricks <= 0)
-        {
-            if (currentLevelNumber >= levels.Length - 1)
-            {
-                SceneManager.LoadScene("TutorialOrGame");
-            }
-        }
-    }
-
-
     public void AdjustScore(int change)
     {
         score += change;
@@ -83,5 +69,4 @@ public class TutorialManager : MonoBehaviour
     {
         SceneManager.LoadScene(menu);
     }
-
 }

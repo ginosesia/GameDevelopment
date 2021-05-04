@@ -13,6 +13,7 @@ public class PowerUpManager : MonoBehaviour
 
     [SerializeField] private OptionsStates optionsStates;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private UIManager uIManager;
     [SerializeField] private SoundManager soundManager;
     [SerializeField] private Transform doublePointsBall;
     [SerializeField] private Transform extraLife;
@@ -35,7 +36,7 @@ public class PowerUpManager : MonoBehaviour
 
     public void SelectPowerUp(Collision2D collision)
     {
-        score = gameManager.score;
+        score = uIManager.score;
 
         if (optionsStates.PowerUpsState)
         {
@@ -51,15 +52,15 @@ public class PowerUpManager : MonoBehaviour
             if (random >= 20 && random <= 35 && score <= 200)
             {
                 DropDoublePoints(collision);
-                
+
             }
 
-            if (random >= 50 && random <= 65)
+            if (random >= 50 && random <= 55)
             {
                 DropDoubleSpeedBall(collision);
-            } 
+            }
 
-            if (random >= 35 && random <= 65 && gameManager.lives < 4) DropExtraLife(collision);
+            if (random >= 35 && random <= 65 && uIManager.lives < 4) DropExtraLife(collision);
 
         }
     }
@@ -73,7 +74,7 @@ public class PowerUpManager : MonoBehaviour
 
     private void DropExtraLife(Collision2D collision)
     {
-        if (gameManager.lives < 5)
+        if (uIManager.lives < 5)
         {
             int random = Random.Range(1, 101);
             if (random < 15) Instantiate(extraLife, collision.transform.position, collision.transform.rotation);

@@ -4,52 +4,87 @@ using UnityEngine.SceneManagement;
 
 public class StartTutorial : MonoBehaviour
 {
-
     public Text tutorialText;
-    public Text tutorialStep;
-    public Button nextButton;
-    private int step = 0;
-    private readonly string level = "Game";
+
+    [SerializeField] private GameManager gameManager;
+    private string message;
+    private bool multiplayer;
+    private readonly int[] step = {1,2,3,4,5,6,7};
+    int i = 0;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        tutorialStep.text = "1";
-        tutorialText.text = "Use 'A' & 'D' or left & right arrows to move\n the paddle";
+        if (PlayerPrefs.GetString("multiplayer") == "true") multiplayer = true;
     }
 
-    public void NextPressed()
-    { 
-        step += 1;
-        if (step == 1)
+    public void PlayTutorial()
+    {
+        tutorialText.text = "Tutorial";
+        Invoke(nameof(SetText), 3);
+    }
+
+
+    private void SetText()
+    {
+        if (i >= 9)
         {
-            tutorialStep.text = "2";
-            tutorialText.text = "Press the space bar to launch the ball";
+            gameManager.tutorialCanvas.gameObject.SetActive(false);
+            PlayerPrefs.SetString("Tutorial", "false");
         }
-        if (step == 2)
+        else
         {
-            tutorialStep.text = "3";
-            tutorialText.text = "Your score is represented on the top left of your screen";
+            tutorialText.text = Next(i);
+            i++;
+            int timeLength = 4;
+            if (i == 3) timeLength = 5;
+            Invoke(nameof(SetText), timeLength);
         }
-        if (step == 3)
+    }
+
+    public string Next(int i)
+    {
+        string singleplayerText = "Use the 'Left' and 'Right' arrows to move the paddle";
+        string multiplayerText = "Player one: \nUse the 'Left' and 'Right' arrows to move the paddle\n\n" +
+            "Player two:\nUse the 'A' and 'D' keys to move the paddle";
+
+        switch (i)
         {
-            tutorialStep.text = "4";
-            tutorialText.text = "You have 3 lives to start with which is\n displayed at the top right of the screen";
+            case 0:
+                if (!multiplayer)
+                {
+                    message = singleplayerText;
+                } else
+                {
+                    message = multiplayerText;
+                }
+                break;
+            case 1:
+                message = "To launch the ball press the 'Space' key on your keyboard";
+                break;
+            case 2:
+                message = "Your score is represented on the top left of your screen";
+                break;
+            case 3:
+                message = "You have 3 lives to start the game. \n Indicated at the top right of your screen";
+                break;
+            case 4:
+                message = "Catch the falling objects to trigger power ups";
+                break;
+            case 5:
+                message = "Press 'Esc' to pause the game to display additional options";
+                break;
+            case 6:
+                message = "To watch a replay press the 'R' key on your keyboard";
+                break;
+            case 7:
+                message = "To return to gameplay from a replay press the 'R' key again";
+                break;
+            case 8:
+                message = "Enjoy the Game\nGood luck";
+                break;
         }
-        if (step == 4)
-        {
-            tutorialStep.text = "5";
-            tutorialText.text = "Catch the falling objects to trigger a \npower up";
-        }
-        if (step == 5)
-        {
-            tutorialStep.text = "6";
-            tutorialText.text = "Press 'Esc' to pause the game and to \ndisplay more options";
-            nextButton.GetComponentInChildren<Text>().text = "Play Game";
-        }
-        if (step == 6)
-        {
-            SceneManager.LoadScene(level);
-        }
+        return message;
     }
 }

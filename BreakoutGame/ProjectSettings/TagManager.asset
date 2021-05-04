@@ -17,6 +17,8 @@ TagManager:
   - doublePointsBall
   - Undefined
   - ColoredBall
+  - multiplayer-paddle
+  - singleplayer-paddle
   layers:
   - Default
   - TransparentFX

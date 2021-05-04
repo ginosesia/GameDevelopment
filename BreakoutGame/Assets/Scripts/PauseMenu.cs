@@ -1,14 +1,25 @@
-﻿using UnityEngine;
+﻿using Breakout.Scoreboards;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool gamePaused = false;
     public GameObject pauseMenu;
-    public GameObject leaderBoard;
     public GameManager gm;
-    private readonly string level = "Game";
+
+    [SerializeField] private Scoreboard scoreboard;
+    [SerializeField] private Canvas leaderboard;
+
     private readonly string mainMenu = "MainMenu";
+    private bool multiplayer = false;
+    private readonly string multiPlayerLevel = "Multiplayer-Game";
+    private readonly string singlePlayerLevel = "Singleplayer-Game";
+
+    private void Start()
+    {
+        GetPlayingState();
+    }
 
     public void ShowPauseMenu()
     {
@@ -46,7 +57,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(level);
+        if (multiplayer) SceneManager.LoadScene(multiPlayerLevel);
+        if (!multiplayer) SceneManager.LoadScene(singlePlayerLevel);
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         gamePaused = false;
@@ -54,11 +66,18 @@ public class PauseMenu : MonoBehaviour
 
     public void LeaderBoard()
     {
-        leaderBoard.SetActive(true);
+        leaderboard.gameObject.SetActive(true);
     }
 
-    public void leaderBoardBackPressed()
+    public void LeaderBoardBackPressed()
     {
-        leaderBoard.SetActive(false);
+        leaderboard.gameObject.SetActive(false);
     }
+
+    private void GetPlayingState()
+    {
+        if (PlayerPrefs.GetString("multiplayer") == "true") multiplayer = true;
+        if (PlayerPrefs.GetString("multiplayer") == "false") multiplayer = false;
+    }
+
 }

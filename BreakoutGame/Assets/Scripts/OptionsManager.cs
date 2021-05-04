@@ -8,6 +8,7 @@ public class OptionsManager : MonoBehaviour
 {
 
     public Toggle PowerUpsToggle;
+    public Toggle TutorialToggle;
     public Toggle SoundToggle;
 
     private string state;
@@ -17,7 +18,8 @@ public class OptionsManager : MonoBehaviour
     private readonly string menu = "MainMenu";
     private static readonly string Sound = "Sound";
     private static readonly string PowerUps = "PowerUps";
-    private readonly string[] switches = { Sound, PowerUps };
+    private static readonly string Tutorial = "Tutorial";
+    private readonly string[] switches = { Sound, PowerUps, Tutorial};
     private string SettingName;
 
     //All Public Methods below:
@@ -47,7 +49,11 @@ public class OptionsManager : MonoBehaviour
         ToggleSwitch(PowerUpsToggle);
     }
 
-
+    public void HandlePlayTutorialToggleButtonPressed()
+    {
+        TutorialToggle = GameObject.Find(Tutorial).GetComponent<Toggle>();
+        ToggleSwitch(TutorialToggle);
+    }
 
     //All Private Methods below:
     private void SetToggleSwitches(string state, string toggleSwitch)
@@ -68,6 +74,9 @@ public class OptionsManager : MonoBehaviour
                 break;
             case "PowerUps":
                 PowerUpsToggle.isOn = toggleState;
+                break;
+            case "Tutorial":
+                TutorialToggle.isOn = toggleState;
                 break;
             default:
                 break;

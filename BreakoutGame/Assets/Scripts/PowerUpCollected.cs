@@ -7,12 +7,12 @@ public class PowerUpCollected : MonoBehaviour
 {
 
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private UIManager uIManager;
     [SerializeField] private SoundManager soundManager;
     [SerializeField] private OptionsStates optionsStates;
     [SerializeField] private Ball ball;
     [SerializeField] private Text powerUp;
     private readonly string extraLife = "Exra Life";
-    private readonly string doubleSpeed = "Double Speed";
     private readonly string coloredBall = "Multi-Coloured Ball";
     private readonly string doublePoints = "Points Doubled";
     [SerializeField] private PowerUpManager powerUpManager;
@@ -22,7 +22,7 @@ public class PowerUpCollected : MonoBehaviour
     {
         if (collision.CompareTag("ExtraLifePowerUp"))
         {
-            gameManager.AdjustLives(1, true);
+            uIManager.AdjustLives(1, true);
             Destroy(collision.gameObject);
             soundManager.PlaySound(2);
             ShowMessage(extraLife);
@@ -30,12 +30,11 @@ public class PowerUpCollected : MonoBehaviour
 
         if (collision.CompareTag("DoubleSpeed"))
         {
-            ball.SetBallSpeed((float)1.75);
+            ball.SetBallSpeed(2);
             Destroy(collision.gameObject);
             gameManager.doubleSpeed.gameObject.SetActive(true);
-            Invoke(nameof(SetNormalSpeed), 10);
+            Invoke(nameof(SetNormalSpeed), 8);
             soundManager.PlaySound(2);
-            ShowMessage(doubleSpeed);
         }
 
         if (collision.CompareTag("ColoredBall"))
@@ -44,22 +43,28 @@ public class PowerUpCollected : MonoBehaviour
             soundManager.PlaySound(2);
             ShowMessage(coloredBall);
             ChangeBallColor();
+            Invoke(nameof(SetNormalColor), 5);
             powerUpManager.ballIsMultiColoured = true;
             powerUpManager.coloredBallDroped = false;
         }
 
         if (collision.CompareTag("doublePointsBall"))
-        {
+        { 
             Destroy(collision.gameObject);
-            gameManager.AdjustScore(0, true);
+            uIManager.AdjustScore(0, true);
             soundManager.PlaySound(2);
             ShowMessage(doublePoints);
         }
     }
 
+    private void SetNormalColor()
+    {
+        ball.GetBallColor();
+    }
+
     private void ChangeBallColor()
     {
-        int random = Random.Range(1, 6);
+        int random = Random.Range(0, 5);
         switch (random)
         {
             case 0:
@@ -77,11 +82,8 @@ public class PowerUpCollected : MonoBehaviour
             case 4:
                 ball.SetBallColor(Color.yellow);
                 break;
-            case 5:
-                ball.SetBallColor(Color.white);
-                break;
         }
-        Invoke(nameof(ChangeBallColor), (float)0.5);
+        Invoke(nameof(ChangeBallColor), (float)0.35);
     }
 
     private void SetNormalSpeed()

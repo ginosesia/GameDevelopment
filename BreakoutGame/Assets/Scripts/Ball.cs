@@ -10,15 +10,19 @@ public class Ball : MonoBehaviour
     public bool multipleBalls = false;
     public float ballSpeed;
 
+    [HideInInspector] public bool inReplayMode = false;
+
     [SerializeField] private Transform paddle;
     [SerializeField] private Transform RedBrick;
     [SerializeField] private Transform PinkBrick;
     [SerializeField] private Transform BlueBrick;
     [SerializeField] private Transform GreenBrick;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private UIManager uIManager;
     [SerializeField] private SoundManager soundManager;
     [SerializeField] private PowerUpManager powerUpManager;
     [SerializeField] private OptionsStates optionsStates;
+
     private SpriteRenderer ball;
     private int value;
     private readonly int lifeLost = -1;
@@ -28,7 +32,6 @@ public class Ball : MonoBehaviour
     private readonly string bbrick = "Blue-Brick";
     private readonly string gbrick = "Green-Brick";
     private readonly string pbrick = "Pink-Brick";
-    private readonly float speed = 400f;
 
 
     // Start is called before the first frame update
@@ -36,7 +39,6 @@ public class Ball : MonoBehaviour
     {
         rigidBody = rigidBody.GetComponent<Rigidbody2D>();
         GetBallColor();
-        
     }
 
     // Update is called once per frame
@@ -47,16 +49,19 @@ public class Ball : MonoBehaviour
         else
         {
             if (gameManager.gameOver) return;
-            if (!ballInPlay) SetBallPosition();
-            if (Input.GetButtonDown(jumpKey) && !ballInPlay)
-            {
-                ballInPlay = true;
-                rigidBody.AddForce(Vector2.up * ballSpeed);
+            if (!inReplayMode)
+            { 
+                if (!ballInPlay) SetBallPosition();
+                if (Input.GetButtonDown(jumpKey) && !ballInPlay)
+                {
+                    ballInPlay = true;
+                    rigidBody.AddForce(Vector2.up * ballSpeed);
+                }
             }
         }
     }
 
-    private void GetBallColor()
+    public void GetBallColor()
     {
         ball = rigidBody.GetComponent<SpriteRenderer>();
         value = optionsStates.GetColor();
@@ -83,14 +88,13 @@ public class Ball : MonoBehaviour
         }
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(outOfBounds))
         {
             soundManager.PlaySound(1);
             rigidBody.velocity = Vector2.zero;
-            gameManager.AdjustLives(lifeLost, false);
+            uIManager.AdjustLives(lifeLost, false);
             ballInPlay = false;
         }
     }
@@ -105,16 +109,10 @@ public class Ball : MonoBehaviour
         transform.position = paddle.position;
     }
 
-    public void SetBallSpeed(float test)
+    public void SetBallSpeed(float state)
     {
-        if (test == 1)
-        {
-            ballSpeed = speed;
-        }
-        else
-        {
-            ballSpeed *= test;
-        }
+        if (state == 1) Time.timeScale = 1f;
+        if (state == 2) Time.timeScale = 2f;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -127,7 +125,7 @@ public class Ball : MonoBehaviour
             if (brick.hitsNeeded > 1)
             {
                 brick.HitBrick();
-                gameManager.AdjustScore(brick.points, false);
+                uIManager.AdjustScore(brick.points, false);
             }
             else
             {
@@ -136,7 +134,7 @@ public class Ball : MonoBehaviour
                 if (collision.gameObject.CompareTag(bbrick)) PlayAnimation(BlueBrick, collision);
                 if (collision.gameObject.CompareTag(gbrick)) PlayAnimation(GreenBrick, collision);
 
-                gameManager.AdjustScore(brick.points, false);
+                uIManager.AdjustScore(brick.points, false);
                 gameManager.UpdateNumberOfBricks();
                 Destroy(collision.gameObject);
             }
@@ -147,14 +145,10 @@ public class Ball : MonoBehaviour
     {
         //Play Sound for brick hit
         soundManager.PlaySound(0);
-
         //Play brick broken animation
         Transform animation = Instantiate(transform, collision.transform.position, collision.transform.rotation);
         Destroy(animation.gameObject, 1.5f);
-
         //Select power up when brick is hit
         powerUpManager.SelectPowerUp(collision);
     }
-
-    
 }
