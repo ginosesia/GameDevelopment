@@ -1319,4 +1319,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Key.unity
   - Assets/Scenes/GameMode.unity
   - Assets/Scenes/Multiplayer-Game.unity
-  playerPath: /Users/ginosesia/Desktop/Breakout/BreakoutGame.exe
+  playerPath: /Users/ginosesia/Desktop/Breakout/Breakout/BreakoutGame.exe
